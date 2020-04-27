@@ -54,6 +54,7 @@ const ProgressiveImage = ({ url, width, height, lg, sm }) => {
                 src={`${url}?w=${lg}`} 
                 width={width} 
                 onLoad={() => {
+                    console.log(hash)
                     gsap.to(`#${hash}`, { duration:.7, opacity:1, ease:"expo.out" })
                 }}  
             />
