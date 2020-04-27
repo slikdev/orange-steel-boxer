@@ -32,11 +32,18 @@ const High = styled.img`
     opacity:0;
 `
 
-const ProgressiveImage = ({ url, width, height, lg, sm }) => {
+class ProgressiveImage extends React.Component{
 
-    function makeid(length) {
+    constructor(props){
+        super(props)
+        this.hash = this.makeid(20)
+        this.state = { loaded: false }
+        this.image = React.createRef()
+    }
+
+    makeid(length) {
         var result = ''
-        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
         var charactersLength = characters.length
         for ( var i = 0; i < length; i++ ) {
             result += characters.charAt(Math.floor(Math.random() * charactersLength))
@@ -44,29 +51,48 @@ const ProgressiveImage = ({ url, width, height, lg, sm }) => {
         return result
     }
 
-    const hash = `image-${makeid(20)}`
+    componentDidMount() {
 
-    return(
-        <Image 
-            width={width}
-            height={height}
-        >
+        const img = this.image.current
+
+        if (img && img.complete) {
+            this.handleImageLoaded();
+        }
+
+     }
+
+     handleImageLoaded() {
+        if (!this.state.loaded) {
+            this.setState({ loaded: true })
+            gsap.to(this.image.current, { duration:.7, opacity:1, ease:"expo.out" })
+        }
+    }
+
+    render(){
+
+        const { width, height, url, lg, sm } = this.props
+
+        return(
+            <Image 
+                width={width}
+                height={height}
+            >
             <High 
-                id={hash}
+                id={`${this.hash}`}
                 src={`${url}?w=${lg}`} 
                 width={width} 
-                onLoad={() => {
-                    console.log(hash)
-                    gsap.to(`#${hash}`, { duration:.7, opacity:1, ease:"expo.out" })
-                }}  
+                ref={this.image} 
+                onLoad={() => this.handleImageLoaded()}
             />
             <Low 
                 src={`${url}?w=${sm}`} 
                 width={sm}
                 height={height}
             />
-        </Image>
-    )
+            </Image>
+        )
+
+    }
 }
 
 ProgressiveImage.propTypes = {
