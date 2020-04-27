@@ -30,7 +30,7 @@ const High = styled.img`
     opacity:0;
 `
 
-const ProgressiveImage = ({ url, width, height, lg, sm }) => {
+const ProgressiveImage = ({ url, width, height, lg, sm, alt }) => {
 
     function makeid(length) {
         var result = ''
@@ -56,11 +56,13 @@ const ProgressiveImage = ({ url, width, height, lg, sm }) => {
                 onLoad={() => {
                     gsap.to(`#${hash}`, { duration:.7, opacity:1, ease:"expo.out" })
                 }}  
+                alt={alt}
             />
             <Low 
                 src={`${url}?w=${sm}`} 
                 width={sm}
                 height={height}
+                alt={alt}
             />
         </Image>
     )
@@ -73,12 +75,14 @@ ProgressiveImage.propTypes = {
     width: PropTypes.string,
     height: PropTypes.string,
     display: PropTypes.string,
+    alt: PropTypes.string,
 }
 
 ProgressiveImage.defaultProps = {
     width: '100%',
     height: 'auto',
     display: 'inline-block',
+    alt: ''
 }
 
 export default ProgressiveImage
