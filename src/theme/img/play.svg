@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="102px" height="123px" viewBox="0 0 102 123" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>UI/Graphics/Spinner</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="UI/Graphics/Spinner" transform="translate(-117.000000, -88.000000)" fill="#000000">
+            <g transform="translate(117.000000, 81.000000)" id="Triangle">
+                <path d="M60.7976755,26.1415557 L114.097151,109.136454 C116.783081,113.31883 115.569971,118.886693 111.387595,121.572623 C109.936681,122.504402 108.248633,122.99976 106.524288,122.99976 L2.97102124,122.99976 C-1.99954151,122.99976 -6.02897876,118.970323 -6.02897876,113.99976 C-6.02897876,112.356226 -5.57893072,110.744069 -4.72765599,109.338176 L45.5261354,26.3432777 C48.1006574,22.0914156 53.634535,20.7316629 57.886397,23.3061848 C59.0603022,24.0169898 60.0561117,24.9868349 60.7976755,26.1415557 Z" transform="translate(55.000192, 68.499760) rotate(-270.000000) translate(-55.000192, -68.499760) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

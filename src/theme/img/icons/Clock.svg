@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>UI/Icons/Clock</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M12,3.55271368e-15 C18.6166833,3.55271368e-15 24,5.38331672 24,12 C24,18.6166833 18.6166833,24 12,24 C5.38331672,24 3.55271368e-15,18.6166833 3.55271368e-15,12 C3.55271368e-15,5.38331672 5.38331672,3.55271368e-15 12,3.55271368e-15 Z M12.0000068,1.50000677 C6.2101991,1.50000677 1.50000677,6.2101991 1.50000677,12.0000068 C1.50000677,17.7898009 6.2101991,22.4999932 12.0000068,22.4999932 C17.7898009,22.4999932 22.4999932,17.7898009 22.4999932,12.0000068 C22.4999932,6.2101991 17.7898009,1.50000677 12.0000068,1.50000677 Z M12.7499966,4.5000203 L12.7499966,11.6894521 L17.0302689,15.9697176 L15.9697176,17.0302689 L11.2499966,12.3105479 L11.2499966,4.5000203 L12.7499966,4.5000203 Z" id="path-1"></path>
+    </defs>
+    <g id="UI/Icons/Clock" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Colours/White">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" fill-rule="nonzero" xlink:href="#path-1"></use>
+            <g mask="url(#mask-2)" fill="#FFFFFF" id="Rectangle">
+                <rect x="0" y="0" width="24" height="24"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

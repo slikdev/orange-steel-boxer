@@ -1,17 +1,28 @@
 import React from "react"
-import TransitionLink from "gatsby-plugin-transition-link"
+import { useStaticQuery, graphql } from "gatsby"
+import NavigationComponent from "../base/Navigation/NavigationComponent"
 
 const ContentfulNavigationComponent = ({ id, transition }) => {
-    return (
-        <nav>
-            <li>
-                <TransitionLink to="/" exit={transition.exit} entry={transition.entry}>GO HOME</TransitionLink>
-            </li>
-            <li>
-            <TransitionLink to="/articles/about" exit={transition.exit} entry={transition.entry}>GO ABOUT</TransitionLink>
-            </li>
-        </nav>
-    )
+    
+    const data = useStaticQuery(
+        graphql`
+          query AllContentfulNavigationComponent{
+            allContentfulNavigationComponent(limit:10){
+              nodes{
+                id
+                theme
+                fixed
+              }
+            }
+          }
+        `
+    ).allContentfulNavigationComponent.nodes.find(item => item.id === id)
+
+    return <NavigationComponent 
+              theme={data.theme} 
+              fixed={data.fixed} 
+              transition={transition} 
+            />
 }
 
 export default ContentfulNavigationComponent

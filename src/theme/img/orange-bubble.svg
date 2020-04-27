@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="704px" height="704px" viewBox="0 0 704 704" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>UI/Gradients/Orange</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="98.7340687%" x2="50%" y2="3.03576608e-15%" id="linearGradient-1">
+            <stop stop-color="#DF453C" offset="0%"></stop>
+            <stop stop-color="#EC574C" stop-opacity="0" offset="50.9158573%"></stop>
+            <stop stop-color="#EF6F61" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="UI/Gradients/Orange" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval" fill="url(#linearGradient-1)" cx="352" cy="352" r="352"></circle>
+    </g>
+</svg>

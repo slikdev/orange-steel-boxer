@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>UI/Icons/Unlock</title>
+    <desc>Created with Sketch.</desc>
+    <g id="UI/Icons/Unlock" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Colours/White" transform="translate(2.000000, 0.000071)" fill="#FEFEFE">
+            <path d="M16.12,8.64 L15.399,8.64 L15.399,5.76 C15.399,2.583 12.816,0 9.64,0 C6.511,0 3.963,2.508 3.887,5.619 C3.886,5.638 3.876,5.653 3.876,5.672 C3.876,5.683 3.882,5.693 3.883,5.704 C3.883,5.723 3.88,5.741 3.88,5.76 L3.893,5.76 C3.94,6.247 4.338,6.633 4.837,6.633 C5.336,6.633 5.733,6.247 5.779,5.76 L5.8,5.76 C5.8,3.642 7.521,1.92 9.64,1.92 C11.758,1.92 13.479,3.642 13.479,5.76 L13.479,8.64 L5.8,8.64 L3.88,8.64 L3.16,8.64 C1.969,8.64 1,9.609 1,10.8 L1,20.88 C1,22.072 1.969,23.04 3.16,23.04 L16.12,23.04 C17.31,23.04 18.279,22.072 18.279,20.88 L18.279,10.8 C18.279,9.609 17.31,8.64 16.12,8.64" id="Fill-1"></path>
+        </g>
+    </g>
+</svg>

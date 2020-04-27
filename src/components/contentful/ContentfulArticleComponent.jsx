@@ -1,5 +1,5 @@
 import React from "react"
 
-const ContentfulArticleComponent = ({ id, transition }) => (<div>navigation</div>)
+const ContentfulArticleComponent = ({ id, transition }) => (<div>article content</div>)
 
 export default ContentfulArticleComponent

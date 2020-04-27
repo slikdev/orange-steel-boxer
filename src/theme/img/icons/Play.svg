@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>UI/Icons/Play</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M11.3577304,5.63117583 L20.0093501,18.9381909 C20.6059048,19.8557488 20.3456802,21.0831794 19.4281224,21.679734 C19.1066394,21.8887477 18.7314201,22 18.3479647,22 L1.53910354,22 C0.44466771,22 -0.442547832,21.1127845 -0.442547832,20.0183486 C-0.442547832,19.6527888 -0.341430028,19.294353 -0.150379721,18.9826902 L8.00686173,5.67567506 C8.57884011,4.74259922 9.79892762,4.44987188 10.7320035,5.02185027 C10.9832994,5.17589544 11.1970664,5.38405922 11.3577304,5.63117583 Z" id="path-1"></path>
+    </defs>
+    <g id="UI/Icons/Play" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Colours/White" transform="translate(2.000000, 0.000000)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#FFFFFF" transform="translate(10.000000, 12.500000) rotate(-270.000000) translate(-10.000000, -12.500000) " xlink:href="#path-1"></use>
+            <g mask="url(#mask-2)" fill="#FFFFFF" id="Rectangle">
+                <g transform="translate(-2.000000, 0.000000)">
+                    <rect x="0" y="0" width="24" height="24"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>UI/Icons/Eye</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M23.9111483,7.215 C23.7221511,6.941 19.1802179,0.5 12.0003235,0.5 C5.83941411,0.5 0.34949486,6.904 0.118498257,7.177 C-0.039499419,7.363 -0.039499419,7.636 0.118498257,7.823 C0.34949486,8.096 5.83941411,14.5 12.0003235,14.5 C18.1612329,14.5 23.6511521,8.096 23.8821487,7.823 C24.0271466,7.65 24.0401464,7.401 23.9111483,7.215 Z M12.0003235,11.5 C9.79435594,11.5 8.00038233,9.706 8.00038233,7.5 C8.00038233,5.294 9.79435594,3.5 12.0003235,3.5 C14.2062911,3.5 16.0002647,5.294 16.0002647,7.5 C16.0002647,9.706 14.2062911,11.5 12.0003235,11.5 Z" id="path-1"></path>
+    </defs>
+    <g id="UI/Icons/Eye" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Colours/White" transform="translate(0.000000, 5.000000)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Eye" fill="#FFFFFF" fill-rule="nonzero" xlink:href="#path-1"></use>
+            <g mask="url(#mask-2)" fill="#FFFFFF" id="Rectangle">
+                <g transform="translate(0.000000, -5.000000)">
+                    <rect x="0" y="0" width="24" height="24"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

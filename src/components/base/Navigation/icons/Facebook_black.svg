@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>UI/Icons/Facebook_black</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M13.2,0 L9.6,0 C6.2862915,0 3.6,2.6862915 3.6,6 L3.6,9.6 L0,9.6 L0,14.4 L3.6,14.4 L3.6,24 L8.4,24 L8.4,14.4 L12,14.4 L13.2,9.6 L8.4,9.6 L8.4,6 C8.4,5.3372583 8.9372583,4.8 9.6,4.8 L13.2,4.8 L13.2,0 Z" id="path-1"></path>
+    </defs>
+    <g id="UI/Icons/Facebook_black" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Colours/White" transform="translate(5.000000, 0.000000)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="facebook" fill="#000000" xlink:href="#path-1"></use>
+            <g id="Colours/Black" mask="url(#mask-2)" fill="#000000">
+                <g transform="translate(-5.000000, 0.000000)" id="Rectangle">
+                    <rect x="0" y="0" width="229" height="229"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
