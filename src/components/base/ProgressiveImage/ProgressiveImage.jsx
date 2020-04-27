@@ -64,7 +64,7 @@ class ProgressiveImage extends React.Component{
      handleImageLoaded() {
         if (!this.state.loaded) {
             this.setState({ loaded: true })
-            gsap.to(this.image.current, { duration:.7, opacity:1, ease:"expo.out" })
+            gsap.to(this.image.current, { duration:1.5, opacity:1, ease:"expo.out" })
         }
     }
 
