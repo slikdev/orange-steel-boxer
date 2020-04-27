@@ -9,6 +9,7 @@ const Image = styled.div`
     height: ${props => props.height};
     position:relative;
     background-color:gray;
+    overflow: hidden;
 `
 
 const Low = styled.img`
@@ -18,6 +19,7 @@ const Low = styled.img`
     top:0;
     left:0;
     z-index:1;
+    filter: blur(2px);
 `
 
 const High = styled.img`
