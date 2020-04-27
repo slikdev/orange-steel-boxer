@@ -76,6 +76,12 @@ const Logo = styled.div`
     display:flex;
     width:100%;
     text-align:center;
+
+    a{
+        margin-left:auto;
+        margin-right:auto;
+        display:flex;
+    }
 `
     
  const SocialIcons = styled.div`
