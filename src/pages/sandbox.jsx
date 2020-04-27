@@ -1,9 +1,22 @@
 import React from "react"
 import ProgressiveImage from "../components/base/ProgressiveImage/ProgressiveImage"
+import ProgressiveBackgroundImage from "../components/base/ProgressiveImage/ProgressiveBackgroundImage"
 
 const Sandbox = ({}) => (
   <div>
     <div>
+      <p>ProgressiveBackgroundImage</p>
+      <ProgressiveBackgroundImage 
+        width="400px"
+        height="600px"
+        size="100% auto"
+        lg="800"
+        sm="80"
+        url="//images.ctfassets.net/hp2vgzfid873/dWM3iWKXRX6UdyeNVIwXt/f603e48330479bd7a05a73ea7a9ade8c/Event-Detail_03_D.jpg"
+      />
+    </div>
+    <div>
+      <p>ProgressiveBackgroundImage</p>
       <ProgressiveImage 
         width="100px"
         height="100px"
@@ -17,7 +30,7 @@ const Sandbox = ({}) => (
         width="800px"
         height="800px"
         lg="800"
-        sm="10"
+        sm="80"
         url="//images.ctfassets.net/hp2vgzfid873/dWM3iWKXRX6UdyeNVIwXt/f603e48330479bd7a05a73ea7a9ade8c/Event-Detail_03_D.jpg"
       />
     </div>
@@ -26,7 +39,7 @@ const Sandbox = ({}) => (
         width="400px"
         height="400px"
         lg="800"
-        sm="10"
+        sm="80"
         url="//images.ctfassets.net/hp2vgzfid873/18ArsEDCNrAiUNISUmsVKe/d946569bdc08ddfc15bfc48aaf567dcb/Event-Detail_01_D.jpg"
       />
     </div>
@@ -34,7 +47,7 @@ const Sandbox = ({}) => (
       <ProgressiveImage 
         width="800px"
         lg="1600"
-        sm="10"
+        sm="160"
         url="//images.ctfassets.net/hp2vgzfid873/3sdzOKXPlhm9yMmJmS8kku/cf340ae9517fd64e360bbc98d4309674/rufus-du-sol-press-photo-by-LeFawnHawk.jpg"
       />
     </div>

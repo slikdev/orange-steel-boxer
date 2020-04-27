@@ -8,18 +8,12 @@ const Image = styled.div`
     width: ${props => props.width};
     height: ${props => props.height};
     position:relative;
-    background-color:white;
+    background-color: ${props => props.color};
     overflow: hidden;
-`
-
-const Low = styled.img`
-    width: 100%;
-    height: auto;
-    position:absolute;
-    top:0;
-    left:0;
-    z-index:1;
-    filter: blur(4px);
+    ${props => props.src ? `background-image:url(${props.src})` : ``};
+    background-size: ${props => props.size};
+    background-position:${props => props.position};
+    background-repeat:no-repeat;
 `
 
 const High = styled.img`
@@ -32,7 +26,7 @@ const High = styled.img`
     opacity:0;
 `
 
-class ProgressiveImage extends React.Component{
+class ProgressiveBackgroundImage extends React.Component{
 
     constructor(props){
         super(props)
@@ -52,30 +46,31 @@ class ProgressiveImage extends React.Component{
     }
 
     componentDidMount() {
-
         const img = this.image.current
-
         if (img && img.complete) {
             this.handleImageLoaded();
         }
-
      }
 
      handleImageLoaded() {
         if (!this.state.loaded) {
             this.setState({ loaded: true })
-            gsap.to(this.image.current, { duration:1.5, opacity:1, ease:"expo.out" })
+            gsap.to(this.image.current, { duration:1.5, opacity:1, delay:.5, ease:"expo.out" })
         }
     }
 
     render(){
 
-        const { width, height, url, lg, sm } = this.props
+        const { width, height, url, lg, sm, size, position, color } = this.props
 
         return(
             <Image 
                 width={width}
                 height={height}
+                src={`${url}?w=${sm}`} 
+                size={size}
+                position={position}
+                color={color}
             >
             <High 
                 id={`${this.hash}`}
@@ -84,30 +79,31 @@ class ProgressiveImage extends React.Component{
                 ref={this.image} 
                 onLoad={() => this.handleImageLoaded()}
             />
-            <Low 
-                src={`${url}?w=${sm}`} 
-                width={sm}
-                height={height}
-            />
             </Image>
         )
 
     }
 }
 
-ProgressiveImage.propTypes = {
+ProgressiveBackgroundImage.propTypes = {
     sm: PropTypes.string.isRequired,
     lg: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
     width: PropTypes.string,
     height: PropTypes.string,
     display: PropTypes.string,
+    size: PropTypes.string,
+    position: PropTypes.string,
+    color: PropTypes.string,
 }
 
-ProgressiveImage.defaultProps = {
-    width: '100%',
-    height: 'auto',
+ProgressiveBackgroundImage.defaultProps = {
+    width: '100px',
+    height: '100px',
+    size: '100% auto',
+    position: 'top left',
     display: 'inline-block',
+    color: 'white',
 }
 
-export default ProgressiveImage
+export default ProgressiveBackgroundImage
