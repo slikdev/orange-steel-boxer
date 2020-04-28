@@ -1,67 +1,82 @@
-import React, { useEffect } from "react"
+import React from "react"
 import styled from "styled-components"
 import { up } from "styled-breakpoints"
-
 import Swiper from "swiper"
 
 import EventCard from "./EventCard"
 
-const breakpoints = {
-    280: {
-        slidesPerView: 1.2,
-        spaceBetween: 20,
-        centeredSlides: true,
-    },
-    728: {
-        slidesPerView: 2.2,
-        spaceBetween: 0,
-        centeredSlides: false,
-    },
-    1024: {
-        slidesPerView: 3,
-        spaceBetween: 20,
-        centeredSlides: false,
-    },
-    1200: {
-        slidesPerView: 4,
-        spaceBetween: 20,
-        centeredSlides: false,
-    },
-}
+class EventListingComponent extends React.Component {
 
-const EventListingComponent = ({ hash, title, events }) => {
+    constructor(props){
+        super(props)
+        this.swiper = null
+    }
 
-    const swiper = new Swiper(`.swiper-container-${hash}`, {
-        direction: "horizontal",
-        breakpoints: breakpoints,
-        loop: true,
-        // autoplay: {
-        //     delay: 3000,
-        // },
-    })
+    componentDidMount(){
 
-    return(
-        <Container>
-            <Title>{title}</Title>
-            <Carousel>
-                <div className={`swiper-container swiper-container-${hash}`}>
-                    <div className="swiper-wrapper">
-                        {events.map((item, index) => (
-                            <div key={index} className="swiper-slide" role="listitem">
-                                <EventCard 
-                                    title={item.title}  
-                                    dateTime={item.dateTime}  
-                                    image={item.image.file.url}  
-                                    slug={item.slug}  
-                                    category={item.category.title}  
-                                />
-                            </div>
-                        ))}
+        const breakpoints = {
+            280: {
+                slidesPerView: 1.2,
+                spaceBetween: 20,
+                centeredSlides: true,
+            },
+            728: {
+                slidesPerView: 2.2,
+                spaceBetween: 0,
+                centeredSlides: false,
+            },
+            1024: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+                centeredSlides: false,
+            },
+            1200: {
+                slidesPerView: 4,
+                spaceBetween: 20,
+                centeredSlides: false,
+            },
+        }
+
+        this.swiper = new Swiper(`.swiper-container-${this.props.hash}`, {
+            direction: "horizontal",
+            breakpoints: breakpoints,
+            loop: true,
+            autoplay: {
+                delay: 3000,
+            },
+        })
+
+    }
+
+    render(){
+
+        const { hash, title, events } = this.props
+
+        return(
+            <Container>
+                <Title>{title}</Title>
+                <Carousel>
+                    <div className={`swiper-container swiper-container-${hash}`}>
+                        <div className="swiper-wrapper">
+                            {events.map((item, index) => (
+                                <div key={index} className="swiper-slide" role="listitem">
+                                    <EventCard 
+                                        title={item.title}  
+                                        dateTime={item.dateTime}  
+                                        image={item.image.file.url}  
+                                        slug={item.slug}  
+                                        category={item.category.title}  
+                                    />
+                                </div>
+                            ))}
+                        </div>
                     </div>
-                </div>
-            </Carousel>
-        </Container>
-    )
+                </Carousel>
+            </Container>
+        )
+
+    }
+
 }
 
 export default EventListingComponent
