@@ -35,9 +35,9 @@ const EventListingComponent = ({ hash, title, events }) => {
         direction: "horizontal",
         breakpoints: breakpoints,
         loop: true,
-        // autoplay: {
-        //     delay: 3000,
-        // },
+        autoplay: {
+            delay: 3000,
+        },
     })
 
     return(
