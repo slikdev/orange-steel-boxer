@@ -70,6 +70,10 @@ query PageQuery($contentful_id:String!){
         __typename
         id
       }
+      ... on ContentfulEventListingComponent{
+        __typename
+        id
+      }
       ... on ContentfulSliderComponent{
         __typename
         id

@@ -32,7 +32,9 @@ const ContentfulSliderComponent = ({ id, transition }) => {
     const { slides } = data
     
     return(
+      <React.Fragment>
         <SliderComponent transition={transition} slides={slides} />
+      </React.Fragment>
     )
 
 }
