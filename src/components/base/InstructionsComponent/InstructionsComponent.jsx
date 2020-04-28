@@ -167,10 +167,11 @@ const Step = styled.div`
     margin-top:20px;
     margin-bottom:20px;
     display:flex;
-    
+    flex-direction:column;
 
     ${up('md')}{
         width:42%;
+        flex-direction:row;
     }
     
     ${up('lg')}{
@@ -195,11 +196,26 @@ const StepNumber = styled.div`
     flex: 0 0 auto;
     padding-top:10px;
     font-weight:600;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+
+    ${up('md')}{
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-bottom: 0px;
+    }
 `
 
 const StepText = styled.div`
     padding-left:10px;
     padding-right:10px;
+    text-align:center;
+
+    ${up('md')}{
+        text-align:left;
+    }
 `
 
 const StepTitle = styled.div`
