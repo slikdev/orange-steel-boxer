@@ -74,6 +74,10 @@ query PageQuery($contentful_id:String!){
         __typename
         id
       }
+      ... on ContentfulInstructionsComponent{
+        __typename
+        id
+      }
       ... on ContentfulSliderComponent{
         __typename
         id

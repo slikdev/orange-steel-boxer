@@ -36,7 +36,7 @@ export default EventCard
 
 const Container = styled.div`
     width:100%;
-    height:575px;
+    height:425px;
 
     ${up('md')}{
         padding-left:10px;
@@ -46,6 +46,7 @@ const Container = styled.div`
     ${up('lg')}{
         padding-left:0px;
         padding-right:0px;
+        height:575px;
     }
 `
 

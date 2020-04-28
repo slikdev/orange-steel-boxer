@@ -1,6 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import NavigationComponent from "../base/Navigation/NavigationComponent"
+import NavigationComponent from "../base/NavigationComponent/NavigationComponent"
 
 const ContentfulNavigationComponent = ({ id, transition }) => {
     
