@@ -574,7 +574,7 @@ const Decorations = styled.div`
 
 const Artist = styled.div`
     position:absolute;
-    bottom:0;
+    bottom:-3px;
     z-index:4;
 
     ${up('xs')} {
