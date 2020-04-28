@@ -19,24 +19,105 @@ class SliderComponent extends React.Component {
     constructor(props){
         super(props)
         this.state = { index: 0 }
+        this.timer = null
     }
 
     componentDidMount(){
 
         const { slides } = this.props
+        const _this = this
+        const titleHeight = document.getElementById('title').offsetHeight;
 
         gsap.registerPlugin(DrawSVGPlugin)
 
         gsap.to("#circle-text", { rotation:"360", repeat:-1, duration:14, ease:"none" })
 
+        gsap.set("#line", { drawSVG:"0%" })
         gsap.set("#orange-background", { opacity:( slides[this.state.index].color === "ORANGE" ? 1 : 0 ) })
         gsap.set("#blue-background", { opacity:( slides[this.state.index].color === "BLUE" ? 1 : 0 ) })
         gsap.set("#green-background", { opacity:( slides[this.state.index].color === "GREEN" ? 1 : 0 ) })
-        
-        gsap.set("#orange-circle", { opacity:( slides[this.state.index].color === "ORANGE" ? 1 : 0 ) })
-        gsap.set("#blue-circle", { opacity:( slides[this.state.index].color === "BLUE" ? 1 : 0 ) })
-        gsap.set("#green-circle", { opacity:( slides[this.state.index].color === "GREEN" ? 1 : 0 ) })
 
+        gsap.set("#orange-circle", { scale: 0, opacity:0 })
+        gsap.set("#blue-circle", { scale: 0, opacity:0 })
+        gsap.set("#green-circle", { scale: 0, opacity:0 })
+
+        gsap.set("#artist", { opacity: 0, x:100 })
+        gsap.set("#title", { opacity:0, y:50 })
+        gsap.set("#description", { opacity:0 })
+        gsap.set("#pagination", { opacity:0, y:10 })
+
+        gsap.to("#orange-background", {opacity: ( this.props.slides[this.state.index].color === "ORANGE" ? 1 : 0 ), duration:1.5, ease:"sine.out"})
+        gsap.to("#green-background", {opacity: ( this.props.slides[this.state.index].color === "GREEN" ? 1 : 0 ), duration:1.5, ease:"sine.out"})
+        gsap.to("#blue-background", {opacity: ( this.props.slides[this.state.index].color === "BLUE" ? 1 : 0 ), duration:1.5, ease:"sine.out"})
+
+        gsap.to("#orange-circle", {opacity: ( this.props.slides[this.state.index].color === "ORANGE" ? 1 : 0 ), scale:1, duration:1, ease:"sine.out", delay:.5})
+        gsap.to("#green-circle", {opacity: ( this.props.slides[this.state.index].color === "GREEN" ? 1 : 0 ), scale:1, duration:1, ease:"sine.out", delay:.5})
+        gsap.to("#blue-circle", {opacity: ( this.props.slides[this.state.index].color === "BLUE" ? 1 : 0 ), scale:1, duration:1, ease:"sine.out", delay:.5})
+
+        gsap.to("#line", { drawSVG:"100%", duration: 2, ease:"sine.out", delay:1 })
+        gsap.to("#artist", { opacity: 1, x: 0, duration: 1.5, ease:"expo.out", delay:1.5 })
+        gsap.to("#title", { opacity: 1, y: 0, duration: 1, ease:"expo.out", delay:1.5 })
+        gsap.to("#description", { opacity: 1, duration: 1, y:0, ease:"sine.out", delay:1.8 })
+        gsap.to("#pagination", { opacity: 1, y: 0, duration: .7, ease:"expo.out", delay:2.2 })
+
+        this.timer = setInterval(() => _this.next(), 8000)
+
+    }
+
+    componentWillUnmount(){
+        clearInterval(this.timer)
+    }
+
+    next(){
+        let next = this.state.index + 1
+
+        if(next >= this.props.slides.length)
+            next = 0
+
+        this.change(next)
+    }
+
+    select(index){
+        clearInterval(this.timer)
+        this.change(index)
+    }
+
+    change(index){
+        const _this = this
+        gsap.to("#line", { drawSVG:0, duration: 1.6, ease:"sine.out" })
+        gsap.to("#artist", { opacity: 0, x: -100, duration: 1, ease:"expo.out" })
+        gsap.to("#title", { opacity: 0, duration: 1, ease:"expo.out" })
+        gsap.to("#description", { opacity: 0, duration: .5, ease:"sine.out" })
+        gsap.to("#pagination", { opacity: 0, y: 0, duration: 1, ease:"expo.out" })
+
+        gsap.to("#orange-circle", { scale:0, opacity:0, duration:1, ease:"sine.out", delay: .5})
+        gsap.to("#green-circle", { scale:0, opacity:0, duration:1, ease:"sine.out", delay: .5})
+        gsap.to("#blue-circle", { scale:0, opacity:0, duration:1, ease:"sine.out", delay: .5})
+
+        gsap.delayedCall( 1, () => {
+
+            gsap.set("#artist", { opacity: 0, x:100 })
+            gsap.set("#title", { y:50 })
+
+            _this.setState({ index:index }, () => {
+
+                gsap.to("#orange-background", {opacity: ( this.props.slides[this.state.index].color === "ORANGE" ? 1 : 0 ), duration:1.5, ease:"sine.out"})
+                gsap.to("#green-background", {opacity: ( this.props.slides[this.state.index].color === "GREEN" ? 1 : 0 ), duration:1.5, ease:"sine.out"})
+                gsap.to("#blue-background", {opacity: ( this.props.slides[this.state.index].color === "BLUE" ? 1 : 0 ), duration:1.5, ease:"sine.out"})
+
+                gsap.to("#orange-circle", {opacity: ( this.props.slides[this.state.index].color === "ORANGE" ? 1 : 0 ), scale:1, duration:1, ease:"sine.out", delay:.5})
+                gsap.to("#green-circle", {opacity: ( this.props.slides[this.state.index].color === "GREEN" ? 1 : 0 ), scale:1, duration:1, ease:"sine.out", delay:.5})
+                gsap.to("#blue-circle", {opacity: ( this.props.slides[this.state.index].color === "BLUE" ? 1 : 0 ), scale:1, duration:1, ease:"sine.out", delay:.5})
+
+                gsap.to("#line", { drawSVG:"100%", duration: 2, ease:"sine.out", delay:1 })
+                gsap.to("#artist", { opacity: 1, x: 0, duration: 1.5, ease:"expo.out", delay:1.5 })
+                gsap.to("#title", { opacity: 1, y: 0, duration: 1, ease:"expo.out", delay:1.5 })
+                gsap.to("#description", { opacity: 1, duration: 1, ease:"sine.out", delay:1.8 })
+                gsap.to("#pagination", { opacity: 1, y: 0, duration: .7, ease:"expo.out", delay:2.2 })
+
+            })
+
+        })
     }
 
     render(){
@@ -46,12 +127,12 @@ class SliderComponent extends React.Component {
         return (
             <Container>
                 <Content>
-                    <ButtonWrap>
+                    <ButtonWrap id="button">
                         <Button type="blue" text={slides[this.state.index].ctaText} icon="Eye" onClick={() => null} />
                     </ButtonWrap>
-                    <Pagination>
+                    <Pagination id="pagination">
                     { slides.map((slide, index) => {
-                        return <Pill key={index} onClick={() => this.select(index)} selected={this.state.currentIndex === index ? true :false} />
+                        return <Pill key={index} onClick={() => this.select(index)} selected={this.state.index === index ? true : false} />
                     })}
                     </Pagination>
                     <Circle id="circle">
@@ -60,8 +141,8 @@ class SliderComponent extends React.Component {
                     </Circle>
                     <Text>
                         <TextWrap>
-                            <Title>{slides[this.state.index].title}</Title>
-                            <Description>{slides[this.state.index].description}</Description>
+                            <Title id="title">{slides[this.state.index].title}</Title>
+                            <Description id="description">{slides[this.state.index].description}</Description>
                         </TextWrap>
                     </Text>
                 </Content>
@@ -392,7 +473,7 @@ const TextWrap = styled.div`
     }
 
     ${up('lg')} {
-        top:170px;
+        top:151px;
         padding-left:20px;
     }
 
@@ -535,7 +616,7 @@ const Circle = styled.div`
     }
     
     ${up('xl')}{    
-        right:180px;
+        right:0px;
         transform:scale(1);
     }
 
@@ -636,8 +717,9 @@ const Pill = styled.div`
     margin-right:4px;
     background-color:white;
     cursor: pointer;
-    ${props => props.selected ? "border-top:1px solid white;" : ""}
-    ${props => props.selected ? "border-bottom:1px solid white;" : ""}
+    ${props => props.selected ? "border-top:2px solid white;" : ""};
+    ${props => props.selected ? "border-bottom:2px solid white;" : ""};
+    ${props => props.selected ? "opacity:1" : "opacity:.7"};
 
     &:hover{
         opacity:.3;
