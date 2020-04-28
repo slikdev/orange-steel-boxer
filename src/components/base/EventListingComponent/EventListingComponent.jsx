@@ -13,9 +13,9 @@ const breakpoints = {
         centeredSlides: true,
     },
     728: {
-        slidesPerView: 3,
-        spaceBetween: 20,
-        centeredSlides: true,
+        slidesPerView: 2.2,
+        spaceBetween: 0,
+        centeredSlides: false,
     },
     1024: {
         slidesPerView: 3,
@@ -35,9 +35,9 @@ const EventListingComponent = ({ hash, title, events }) => {
         direction: "horizontal",
         breakpoints: breakpoints,
         loop: true,
-        autoplay: {
-            delay: 3000,
-        },
+        // autoplay: {
+        //     delay: 3000,
+        // },
     })
 
     return(
@@ -132,8 +132,8 @@ const Carousel = styled.div`
     position: relative;
 
     ${up('md')} {
-        padding-left:10px;
-        padding-right:10px;
+        padding-left:0px;
+        padding-right:0px;
     }
     
     ${up('lg')} {
