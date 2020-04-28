@@ -1,7 +1,6 @@
-import React, { useEffect } from "react"
+import React from "react"
 import styled from "styled-components"
 import { up } from "styled-breakpoints"
-import Swiper from "swiper"
 
 import vars from "../../../theme/styles/vars"
 
