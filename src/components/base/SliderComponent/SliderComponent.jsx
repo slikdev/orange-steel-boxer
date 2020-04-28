@@ -6,6 +6,7 @@ import { gsap } from "gsap"
 import { DrawSVGPlugin } from "gsap/DrawSVGPlugin"
 
 import vars from "../../../theme/styles/vars"
+import Button from "../Button/Button"
 
 import OrangeBubbleIMG from "./img/orange-bubble.svg"
 import BlueBubbleIMG from "./img/blue-bubble.svg"
@@ -17,7 +18,7 @@ class SliderComponent extends React.Component {
 
     constructor(props){
         super(props)
-        this.state = { index: 1 }
+        this.state = { index: 0 }
     }
 
     componentDidMount(){
@@ -25,6 +26,8 @@ class SliderComponent extends React.Component {
         const { slides } = this.props
 
         gsap.registerPlugin(DrawSVGPlugin)
+
+        gsap.to("#circle-text", { rotation:"360", repeat:-1, duration:14, ease:"none" })
 
         gsap.set("#orange-background", { opacity:( slides[this.state.index].color === "ORANGE" ? 1 : 0 ) })
         gsap.set("#blue-background", { opacity:( slides[this.state.index].color === "BLUE" ? 1 : 0 ) })
@@ -43,6 +46,18 @@ class SliderComponent extends React.Component {
         return (
             <Container>
                 <Content>
+                    <ButtonWrap>
+                        <Button type="blue" text={slides[this.state.index].ctaText} icon="Eye" onClick={() => null} />
+                    </ButtonWrap>
+                    <Pagination>
+                    { slides.map((slide, index) => {
+                        return <Pill key={index} onClick={() => this.select(index)} selected={this.state.currentIndex === index ? true :false} />
+                    })}
+                    </Pagination>
+                    <Circle id="circle">
+                        <img src={PlayIMG} />
+                        <CircleText id="circle-text"></CircleText>
+                    </Circle>
                     <Text>
                         <TextWrap>
                             <Title>{slides[this.state.index].title}</Title>
@@ -103,7 +118,7 @@ const Container = styled.div`
     }
 
     ${up('lg')} {
-        height:600px;
+        height:580px;
         margin-bottom:40px;
     }
     
@@ -295,7 +310,7 @@ const Line = styled.div`
     }
 
     ${up('lg')}{
-        bottom: 220px;
+        bottom: 240px;
         margin-left: -1440px;
         width: 3000px;
         height: 264px;
@@ -360,6 +375,7 @@ const Text = styled.div`
 `
 
 const TextWrap = styled.div`
+    overflow-y:hidden;
 
     ${up('xs')} {
         position:relative;
@@ -371,16 +387,20 @@ const TextWrap = styled.div`
 
     ${up('md')} {
         position:absolute;
-        width:50%;
+        width:60%;
         top:197px;
     }
 
     ${up('lg')} {
-        top:215px;
+        top:170px;
+        padding-left:20px;
     }
 
     ${up('xl')} {
+        padding-left:0px;
+        left:0;
         top:250px;
+        width:50%;
     }
 `
 
@@ -493,4 +513,133 @@ const Artist = styled.img`
         width:50%;
     }
 
+`
+
+const Circle = styled.div`
+    display:none;
+    position:absolute;
+    
+    bottom:-150px;
+    width:300px;
+    height:300px;
+
+    ${up('md')}{
+        right:0px;
+        display:block;
+        transform:scale(.5);
+    }
+    
+    ${up('lg')}{
+        right:70px;
+        transform:scale(.7);
+    }
+    
+    ${up('xl')}{    
+        right:180px;
+        transform:scale(1);
+    }
+
+    img{
+        position:absolute;
+        left:110px;
+        top:90px;
+    }
+`
+
+const CircleText = styled.div`
+
+    background-image:url(${CircleTextIMG});
+    background-repeat:no-repeat;
+    width:300px;
+    height:300px;
+
+    ${up('lg')}{
+        
+    }
+    
+    ${up('xl')}{
+        
+    }
+    
+`
+
+const ButtonWrap = styled.div`
+    position:absolute;
+
+    ${up('xs')} {
+        width:100%;
+        bottom:20px;
+        left:0;
+        text-align:center;
+    }
+
+    ${up('sm')} {
+
+    }
+
+    ${up('md')} {
+        text-align:left;
+        bottom:-20px;
+        left:0px;
+        bottom: -24px;
+        left: 40px;
+    }
+
+    ${up('lg')} {
+        left: 20px;
+    }
+
+    ${up('xl')} {
+        left: 0px;
+    }
+`
+
+const Pagination = styled.div`
+    display:flex;
+    margin-left:auto;
+    margin-right:auto;
+    position:absolute;
+    width:260px;
+
+    ${up('xs')}{
+        display:none;
+    }
+   
+    ${up('sm')}{
+        display:flex;
+        bottom:370px;
+        left:0;
+        right:0;
+    }
+
+    ${up('md')}{
+        bottom:80px;
+        left:36px;
+        right:auto;
+    }
+
+    ${up('lg')}{
+        bottom:60px;
+        left:20px;
+    }
+
+    ${up('xl')}{
+        bottom:170px;
+        left:00px;
+    }
+`
+
+const Pill = styled.div`
+    width:100%;
+    height:2px;
+    margin-left:4px;
+    margin-right:4px;
+    background-color:white;
+    cursor: pointer;
+    ${props => props.selected ? "border-top:1px solid white;" : ""}
+    ${props => props.selected ? "border-bottom:1px solid white;" : ""}
+
+    &:hover{
+        opacity:.3;
+    }
 `

@@ -59,7 +59,7 @@ const Styles = {
         text-align:center;
         display:inline-block;
         background-color:${vars.BLUE};
-        padding:12px 32px;
+        padding:8px 22px;
         border-radius:32px;
         line-height:30px;
         font-weight:600;
