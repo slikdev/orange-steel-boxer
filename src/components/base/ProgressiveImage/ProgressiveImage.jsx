@@ -8,7 +8,7 @@ const Image = styled.div`
     width: ${props => props.width};
     height: ${props => props.height};
     position:relative;
-    background-color:white;
+    background-color:transparent;
     overflow: hidden;
 `
 
@@ -39,6 +39,7 @@ class ProgressiveImage extends React.Component{
         this.hash = this.makeid(20)
         this.state = { loaded: false }
         this.image = React.createRef()
+        this.low = React.createRef()
     }
 
     makeid(length) {
@@ -65,6 +66,7 @@ class ProgressiveImage extends React.Component{
         if (!this.state.loaded) {
             this.setState({ loaded: true })
             gsap.to(this.image.current, { duration:1.5, opacity:1, ease:"expo.out" })
+            gsap.to(this.low.current, { duration:1.5, opacity:0, ease:"expo.out" })
         }
     }
 
@@ -88,6 +90,7 @@ class ProgressiveImage extends React.Component{
                 src={`${url}?w=${sm}`} 
                 width={sm}
                 height={height}
+                ref={this.low} 
             />
             </Image>
         )

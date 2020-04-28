@@ -7,6 +7,7 @@ import { DrawSVGPlugin } from "gsap/DrawSVGPlugin"
 
 import vars from "../../../theme/styles/vars"
 import Button from "../Button/Button"
+import ProgressiveImage from "../ProgressiveImage/ProgressiveImage"
 
 import OrangeBubbleIMG from "./img/orange-bubble.svg"
 import BlueBubbleIMG from "./img/blue-bubble.svg"
@@ -60,7 +61,7 @@ class SliderComponent extends React.Component {
         gsap.to("#description", { opacity: 1, duration: 1, y:0, ease:"sine.out", delay:1.8 })
         gsap.to("#pagination", { opacity: 1, y: 0, duration: .7, ease:"expo.out", delay:2.2 })
 
-        this.timer = setInterval(() => _this.next(), 8000)
+        // this.timer = setInterval(() => _this.next(), 8000)
 
     }
 
@@ -147,7 +148,16 @@ class SliderComponent extends React.Component {
                     </Text>
                 </Content>
                 <Decorations>
-                    <Artist id="artist" src={slides[this.state.index].image.file.url} />
+                    {/* <Artist id="artist" src={slides[this.state.index].image.file.url} /> */}
+                    <Artist id="artist">
+                        <ProgressiveImage 
+                            width="100%"
+                            height="100%"
+                            sm="10"
+                            lg="1000"
+                            url={slides[this.state.index].image.file.url}
+                        />
+                    </Artist>
                 </Decorations>
                 <Background>
                     <Line>
@@ -562,7 +572,7 @@ const Decorations = styled.div`
     z-index:5;
 `
 
-const Artist = styled.img`
+const Artist = styled.div`
     position:absolute;
     bottom:0;
     z-index:4;
