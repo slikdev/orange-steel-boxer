@@ -131,6 +131,13 @@ const Carousel = styled.div`
     z-index:1;
     position: relative;
 
-    ${up('xs')} {
+    ${up('md')} {
+        padding-left:10px;
+        padding-right:10px;
+    }
+    
+    ${up('lg')} {
+        padding-left:0px;
+        padding-right:0px;
     }
 `
