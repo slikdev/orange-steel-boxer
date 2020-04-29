@@ -20,7 +20,7 @@ const InstructionsComponent = ({ title, description, step, instructions, image }
                     </Top>
                     <Bottom>
                         {step.map((s, i) => (
-                            <Step>
+                            <Step key={i}>
                                 <StepNumber>{(i + 1)}</StepNumber>
                                 <StepText>
                                     <StepTitle>{s}</StepTitle>
