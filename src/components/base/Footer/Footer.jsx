@@ -90,7 +90,6 @@ const Section = styled.div`
     width:100%;
     ${up('xs')}{
         margin-top:30px;
-        margin-bottom:30px;
     }
     
     ${up('lg')}{
