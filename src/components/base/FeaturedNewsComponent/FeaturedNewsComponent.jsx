@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { up } from "styled-breakpoints"
+import moment from "moment-timezone"
 
 const FeaturedNewsComponent = ({ title, news }) => {
 
@@ -9,11 +10,35 @@ const FeaturedNewsComponent = ({ title, news }) => {
             <Title>{title}</Title>
             <NewsContainer>
             {news.map((item, index) => {
+
+                const date = moment(item.updatedAt)
+                const tz = moment.tz.guess() 
+
                 return(
                     <NewsItem key={index}>
                         <NewsText>
                             <NewsCategory>{item.category.title}</NewsCategory>
                             <NewsTitle>{item.title}</NewsTitle>
+                            <NewsDate>
+                                <TimeIcon width={18} height={18} viewBox="0 0 24 24">
+                                    <defs>
+                                        <path
+                                        d="M12 0c6.617 0 12 5.383 12 12s-5.383 12-12 12S0 18.617 0 12 5.383 0 12 0zm0 1.5C6.21 1.5 1.5 6.21 1.5 12S6.21 22.5 12 22.5 22.5 17.79 22.5 12 17.79 1.5 12 1.5zm.75 3v7.19l4.28 4.28-1.06 1.06-4.72-4.72V4.5h1.5z"
+                                        id="prefix__a"
+                                        />
+                                    </defs>
+                                    <g fill="none" fillRule="evenodd">
+                                        <mask id="prefix__b" fill="#fff">
+                                        <use xlinkHref="#prefix__a" />
+                                        </mask>
+                                        <use fill="#FFF" fillRule="nonzero" xlinkHref="#prefix__a" />
+                                        <g mask="url(#prefix__b)" fill="#FFF">
+                                        <path d="M0 0h24v24H0z" />
+                                        </g>
+                                    </g>
+                                </TimeIcon>
+                                <span>{date.startOf('day').fromNow()}</span>
+                                </NewsDate>
                         </NewsText>
                         <NewsImage url={item.image.file.url} />
                     </NewsItem>
@@ -107,6 +132,7 @@ const NewsItem = styled.div`
     border-radius:12px;
     margin:10px;
     display:flex;
+    ${props => props.flex ? `flex:${props.flex}` : ``}
     background-color:black;
     overflow:hidden;
 `
@@ -161,4 +187,26 @@ const NewsTitle = styled.h4`
     color:white;
     padding:0;
     margin:0;
+`
+
+const TimeIcon = styled.svg`
+    margin-right:4px;
+    position:absolute;
+    left:0;
+    top:-9px;
+`
+
+const NewsDate = styled.div`
+    font-size:12px;
+    color:white;
+    padding:0;
+    margin:0;
+    margin-top:20px;
+    line-height:0px;
+    position:relative;
+    padding-left:24px;
+
+    span{
+        display:inline-block;
+    }
 `
