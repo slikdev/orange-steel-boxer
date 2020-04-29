@@ -150,8 +150,13 @@ const Bottom = styled.div`
     padding-bottom:20px;
     flex-wrap:wrap;
 
+    ${up('xs')}{
+        padding-bottom:40px;
+    }
+
     ${up('md')}{
         flex-direction:row;
+        padding-bottom:20px;
     }
 
     ${up('lg')}{
