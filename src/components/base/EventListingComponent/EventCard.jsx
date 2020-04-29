@@ -53,6 +53,7 @@ const Container = styled.div`
 const ImageWrap = styled.div`
     border-radius:12px;
     overflow:hidden;
+    background-color:black;
 `
 
 const Image = styled.div`
@@ -74,6 +75,7 @@ const Image = styled.div`
 
     &:hover{
         transform: scale(1.1);
+        opacity:.5;
     }
 `
 
