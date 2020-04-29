@@ -61,7 +61,7 @@ class SliderComponent extends React.Component {
         gsap.to("#description", { opacity: 1, duration: 1, y:0, ease:"sine.out", delay:1.8 })
         gsap.to("#pagination", { opacity: 1, y: 0, duration: .7, ease:"expo.out", delay:2.2 })
 
-        // this.timer = setInterval(() => _this.next(), 8000)
+        this.timer = setInterval(() => _this.next(), 9000)
 
     }
 
