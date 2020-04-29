@@ -13,10 +13,8 @@ class PageAnimation extends React.Component {
 
     if(window.innerWidth > window.innerHeight){
       animationData = widescreenAnimationData
-      console.log('widescreen')
     }else{
       animationData = portraitAnimationData
-      console.log('portrait')
     }
 
     const options = {
