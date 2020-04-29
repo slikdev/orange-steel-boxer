@@ -6,6 +6,7 @@ import PageAnimation from "../base/PageAnimation/PageAnimation"
 import SEO from "../global/seo"
 import Layout from "../global/layout"
 import contentfulComponents from "../contentful/components"
+import Footer from "../base/Footer/Footer"
 
 const Page = ({ pageContext, data }) => {
 
@@ -36,6 +37,7 @@ const Page = ({ pageContext, data }) => {
             />
             <main>
             { components.map((component, i) => createContentfulComponent(component.id, component.__typename, i)) }
+            <Footer />
             </main>
             <TransitionPortal>
               <PageAnimation playing={animate} />
