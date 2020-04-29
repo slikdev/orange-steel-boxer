@@ -70,6 +70,10 @@ query PageQuery($contentful_id:String!){
         __typename
         id
       }
+      ... on ContentfulFeaturedNewsComponent{
+        __typename
+        id
+      }
       ... on ContentfulCompanyListComponent{
         __typename
         id
