@@ -16,7 +16,7 @@ const ArticleComponent = ({ title, short, category, standout, image, body, date 
                 <Short>{short}</Short>
             </Top>
             <Bottom>
-                <Date>{time.format("MMM Do YY")}</Date>
+                <Date>{time.format("Do MMMM YYYY")}</Date>
                 <Category>{category}</Category>
                 <Content>
                     <Left>
@@ -123,5 +123,6 @@ const Standout = styled.p`
     font-size:18px;
     font-weight:600;
     line-height:24px;
-    padding-top:10px;
+    margin-top:0px;
+    margin-bottom:30px;
 `

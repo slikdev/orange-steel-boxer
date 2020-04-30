@@ -66,20 +66,30 @@ const IMG = styled.img`
     width:100%;
 `
 
-const YoutubeInner = styled.div`
-    padding-top:30px;
-    padding-bottom:30px;
+const ApectRatioBox = styled.div`
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    margin-bottom:30px;
+
+    iframe{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
 `
 
 const YoutubeEmbed = ({ id }) => (
-    <YoutubeInner>
+    <ApectRatioBox>
         <iframe 
-            width="100%" 
-            height="315" 
+            width="560" 
+            height="349"
             src={`https://www.youtube.com/embed/${id}`} 
             frameBorder="0" 
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
             allowFullScreen>
         </iframe>
-    </YoutubeInner>
+    </ApectRatioBox>
 )
