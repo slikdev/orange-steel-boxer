@@ -11,6 +11,7 @@ const ContentfulArticleComponent = ({ id, transition }) => {
             allContentfulArticleComponent{
               nodes{
                 id
+                updatedAt
                 title
                 short
                 category{
@@ -39,6 +40,7 @@ const ContentfulArticleComponent = ({ id, transition }) => {
             standout={data.standout}
             image={data.image.file.url}
             body={data.body}
+            date={data.updatedAt}
         />
     )
 }

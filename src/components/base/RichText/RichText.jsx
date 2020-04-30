@@ -3,6 +3,8 @@ import styled from "styled-components"
 import { BLOCKS } from "@contentful/rich-text-types"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
+import vars from "../../../theme/styles/vars"
+
 const RichText = ({ json }) => {
 
     const options = {
@@ -47,7 +49,14 @@ const H2 = styled.h2``
 
 const H3 = styled.h3``
 
-const P = styled.p``
+const P = styled.p`
+    font-size: 16px;
+    line-height: 28px;
+
+    a{
+        color:${vars.ORANGE};
+    }
+`
 
 const UL = styled.ul``
 
@@ -57,13 +66,20 @@ const IMG = styled.img`
     width:100%;
 `
 
+const YoutubeInner = styled.div`
+    padding-top:30px;
+    padding-bottom:30px;
+`
+
 const YoutubeEmbed = ({ id }) => (
-    <iframe 
-        width="100%" 
-        height="315" 
-        src={`https://www.youtube.com/embed/${id}`} 
-        frameBorder="0" 
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-        allowFullScreen>
-    </iframe>
+    <YoutubeInner>
+        <iframe 
+            width="100%" 
+            height="315" 
+            src={`https://www.youtube.com/embed/${id}`} 
+            frameBorder="0" 
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+            allowFullScreen>
+        </iframe>
+    </YoutubeInner>
 )

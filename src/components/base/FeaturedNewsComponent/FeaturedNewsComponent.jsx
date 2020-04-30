@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "gatsby"
 import styled from "styled-components"
 import { up } from "styled-breakpoints"
 import moment from "moment-timezone"
@@ -15,33 +16,35 @@ const FeaturedNewsComponent = ({ title, news }) => {
                 const tz = moment.tz.guess() 
 
                 return(
-                    <NewsItem key={index}>
-                        <NewsText>
-                            <NewsCategory>{item.category.title}</NewsCategory>
-                            <NewsTitle>{item.title}</NewsTitle>
-                            <NewsDate>
-                                <TimeIcon width={18} height={18} viewBox="0 0 24 24">
-                                    <defs>
-                                        <path
-                                        d="M12 0c6.617 0 12 5.383 12 12s-5.383 12-12 12S0 18.617 0 12 5.383 0 12 0zm0 1.5C6.21 1.5 1.5 6.21 1.5 12S6.21 22.5 12 22.5 22.5 17.79 22.5 12 17.79 1.5 12 1.5zm.75 3v7.19l4.28 4.28-1.06 1.06-4.72-4.72V4.5h1.5z"
-                                        id="prefix__a"
-                                        />
-                                    </defs>
-                                    <g fill="none" fillRule="evenodd">
-                                        <mask id="prefix__b" fill="#fff">
-                                        <use xlinkHref="#prefix__a" />
-                                        </mask>
-                                        <use fill="#FFF" fillRule="nonzero" xlinkHref="#prefix__a" />
-                                        <g mask="url(#prefix__b)" fill="#FFF">
-                                        <path d="M0 0h24v24H0z" />
+                    <Link  key={index}  to={`/news/${item.slug}`}>
+                        <NewsItem>
+                            <NewsText>
+                                <NewsCategory>{item.category.title}</NewsCategory>
+                                <NewsTitle>{item.title}</NewsTitle>
+                                <NewsDate>
+                                    <TimeIcon width={18} height={18} viewBox="0 0 24 24">
+                                        <defs>
+                                            <path
+                                            d="M12 0c6.617 0 12 5.383 12 12s-5.383 12-12 12S0 18.617 0 12 5.383 0 12 0zm0 1.5C6.21 1.5 1.5 6.21 1.5 12S6.21 22.5 12 22.5 22.5 17.79 22.5 12 17.79 1.5 12 1.5zm.75 3v7.19l4.28 4.28-1.06 1.06-4.72-4.72V4.5h1.5z"
+                                            id="prefix__a"
+                                            />
+                                        </defs>
+                                        <g fill="none" fillRule="evenodd">
+                                            <mask id="prefix__b" fill="#fff">
+                                            <use xlinkHref="#prefix__a" />
+                                            </mask>
+                                            <use fill="#FFF" fillRule="nonzero" xlinkHref="#prefix__a" />
+                                            <g mask="url(#prefix__b)" fill="#FFF">
+                                            <path d="M0 0h24v24H0z" />
+                                            </g>
                                         </g>
-                                    </g>
-                                </TimeIcon>
-                                <span>{date.startOf('day').fromNow()}</span>
-                                </NewsDate>
-                        </NewsText>
-                        <NewsImage url={item.image.file.url} />
-                    </NewsItem>
+                                    </TimeIcon>
+                                    <span>{date.startOf('day').fromNow()}</span>
+                                    </NewsDate>
+                            </NewsText>
+                            <NewsImage url={item.image.file.url} />
+                        </NewsItem>
+                    </Link>
                 )
             })}
             </NewsContainer>
@@ -122,6 +125,11 @@ const NewsContainer = styled.div`
 
     ${up('md')}{
         flex-direction:row;
+    }
+
+    a{
+        display:flex;
+        width:100%;
     }
 `
 

@@ -35,6 +35,7 @@ const ContentfulFeaturedNewsComponent = ({ id, transition }) => {
         <FeaturedNewsComponent 
             title={data.title} 
             news={data.news} 
+            transition={transition}
         />
     )
 }
