@@ -13,11 +13,11 @@ function SEO({ title, description, keywords, image, meta, lang }) {
       <meta property="og:type" content="website"/>
       <meta property="og:title" content={ `Global Live | ${title}` }/>
       <meta property="og:description" content={ description }/>
-      <meta property="og:image" content={ image }/>
+      { image && <meta property="og:image" content={ image }/> }
       <meta property="twitter:card" content="summary_large_image"/>
       <meta property="twitter:title" content={ `Global Live | ${title}` }/>
       <meta property="twitter:description" content={ description }/>
-      <meta property="twitter:image" content={ image }/>
+      { image && <meta property="twitter:image" content={ image }/> }
     </Helmet>
   )
 }

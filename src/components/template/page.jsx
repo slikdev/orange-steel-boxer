@@ -11,8 +11,8 @@ import Footer from "../base/Footer/Footer"
 const Page = ({ pageContext, data }) => {
 
     const [ animate, setAnimate ] = useState(false)
-    const { contentfulPage } = data
-    const { meta, components } = contentfulPage
+    const { contentfulPage, events } = data
+    const { meta, components  } = contentfulPage
 
     const transition = {
       exit: {
@@ -25,7 +25,7 @@ const Page = ({ pageContext, data }) => {
     }
 
     function createContentfulComponent(id, __typename, i) {
-        return ( ContentfulComponent => <ContentfulComponent id={id} key={i} transition={transition} />)(contentfulComponents[__typename] )
+        return ( ContentfulComponent => <ContentfulComponent id={id} key={i} transition={transition} events={events.all} />)(contentfulComponents[__typename] )
     }
 
     return(
@@ -33,7 +33,7 @@ const Page = ({ pageContext, data }) => {
             <SEO 
                 title={meta.title} 
                 description={meta.description} 
-                image={meta.image.file.url} 
+                image={ ( meta.image ? meta.image.file.url : null  )} 
             />
             <main>
             { components.map((component, i) => createContentfulComponent(component.id, component.__typename, i)) }
@@ -72,6 +72,10 @@ query PageQuery($contentful_id:String!){
         __typename
         id
       }
+      ... on ContentfulLineupComponent{
+        __typename
+        id
+      }
       ... on ContentfulFeaturedNewsComponent{
         __typename
         id
@@ -91,6 +95,23 @@ query PageQuery($contentful_id:String!){
       ... on ContentfulSliderComponent{
         __typename
         id
+      }
+    }
+  }
+  events:allContentfulEvent(limit:100){
+    all:edges{
+      event:node{
+        title
+        slug
+        category{
+          title
+        }
+        dateTime
+        image{
+          file{
+            url
+          }
+        }
       }
     }
   }

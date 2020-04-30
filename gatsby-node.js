@@ -28,9 +28,14 @@ exports.createPages = ({ graphql, actions }) => {
             const template = path.resolve(`./src/components/template/page.jsx`)
 
             _.each(result.data.allContentfulPage.edges, edge => {
+                
+                let prefix = `/${edge.node.prefix}`
+
+                if(edge.node.prefix === 'none')
+                    prefix = ''
 
                 const page = {
-                    path: edge.node.index ? `/` : `/${edge.node.prefix}/${edge.node.slug}`,
+                    path: edge.node.index ? `/` : `${prefix}/${edge.node.slug}`,
                     component: slash(template),
                     context: {
                         id: edge.node.id,

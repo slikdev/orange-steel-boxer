@@ -179,7 +179,7 @@ const NavigationComponent = ({ theme, fixed, transition }) => (
         <Events>
             <SMButton>
                 <TransitionLink
-                    to="/events"
+                    to="/our-lineup"
                     exit={transition.exit}
                     entry={transition.entry}
                 >
@@ -188,7 +188,7 @@ const NavigationComponent = ({ theme, fixed, transition }) => (
             </SMButton>
             <LGButton>
                 <TransitionLink
-                    to="/events"
+                    to="/our-lineup"
                     exit={transition.exit}
                     entry={transition.entry}
                 >
