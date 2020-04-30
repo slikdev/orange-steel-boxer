@@ -101,19 +101,22 @@ const Title = styled.h3`
 `
 
 const Short = styled.p`
-
+    line-height:24px;
 `
 
 const Date = styled.p`
-    font-weight:600;
+    font-weight:300;
     text-transform:uppercase;
     letter-spacing:4px;
     display:inline-block;
-    margin-right:70px;
+
+    ${up('lg')}{
+        margin-right:70px;
+    }
 `
 
 const Category = styled.p`
-    font-weight:600;
+    font-weight:300;
     text-transform:uppercase;
     letter-spacing:4px;
     display:inline-block;
