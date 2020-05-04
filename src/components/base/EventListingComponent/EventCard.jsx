@@ -5,7 +5,7 @@ import moment from "moment-timezone"
 
 import vars from "../../../theme/styles/vars"
 
-const EventCard = ({ title, dateTime, image, slug, category }) => {
+const EventCard = ({ title, dateTime, image, slug, category, link }) => {
 
     const date = moment(dateTime)
     const tz = moment.tz.guess()
@@ -15,24 +15,31 @@ const EventCard = ({ title, dateTime, image, slug, category }) => {
     const time = date.tz(tz).format('h:mm a')
 
     return(
-        <Container>
-            <Text>
-                <Category>{category}</Category>
-                <Title>{title}</Title>
-            </Text>
-            <DateBox>
-                <Time>{time}</Time>
-                <Day>{day}</Day>
-                <Month>{month}</Month>
-            </DateBox>
-            <ImageWrap>
-                <Image background={`${image}?h=900`}  />
-            </ImageWrap>
-        </Container>
+        <Link href={link} target="_blank">
+            <Container>
+                <Text>
+                    <Category>{category}</Category>
+                    <Title>{title}</Title>
+                </Text>
+                <DateBox>
+                    <Time>{time}</Time>
+                    <Day>{day}</Day>
+                    <Month>{month}</Month>
+                </DateBox>
+                <ImageWrap>
+                    <Image background={`${image}?h=900`}  />
+                </ImageWrap>
+            </Container>
+        </Link>
     )
 }
 
 export default EventCard
+
+const Link = styled.a`
+    color:black;
+    text-decoration:none;
+`
 
 const Container = styled.div`
     width:100%;

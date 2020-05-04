@@ -22,6 +22,7 @@ const LineupComponent = ({ title, events }) => {
                                     image={item.image.file.url}  
                                     slug={item.slug}  
                                     category={item.category.title}  
+                                    link={(item.eventbriteLink ? item.eventbriteLink : "#")} 
                                 />
                             </Item>
                         </div>

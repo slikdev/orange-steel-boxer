@@ -14,6 +14,8 @@ const Page = ({ pageContext, data }) => {
     const { contentfulPage, events } = data
     const { meta, components  } = contentfulPage
 
+    console.log(pageContext)
+
     const transition = {
       exit: {
         length: 3,
@@ -103,6 +105,9 @@ query PageQuery($contentful_id:String!){
       event:node{
         title
         slug
+        eventbriteId
+        eventbriteLink
+        youtubeId
         category{
           title
         }

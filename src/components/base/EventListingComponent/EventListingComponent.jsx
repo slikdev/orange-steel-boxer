@@ -52,6 +52,8 @@ class EventListingComponent extends React.Component {
 
         const { hash, title, events } = this.props
 
+        console.log(events)
+
         return(
             <Container>
                 <Title>{title}</Title>
@@ -65,7 +67,8 @@ class EventListingComponent extends React.Component {
                                         dateTime={item.dateTime}  
                                         image={item.image.file.url}  
                                         slug={item.slug}  
-                                        category={item.category.title}  
+                                        category={item.category.title} 
+                                        link={(item.eventbriteLink ? item.eventbriteLink : "#")} 
                                     />
                                 </div>
                             ))}
