@@ -100,7 +100,7 @@ query PageQuery($contentful_id:String!){
       }
     }
   }
-  events:allContentfulEvent(limit:100){
+  events:allContentfulEvent(limit:100, filter:{visible:{eq:true}}){
     all:edges{
       event:node{
         title

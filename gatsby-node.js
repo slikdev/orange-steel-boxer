@@ -51,7 +51,64 @@ exports.createPages = ({ graphql, actions }) => {
 
             })
 
-            resolve()
+            // resolve()
+            graphql(`
+            {
+                allContentfulEvent(limit: 100){
+                    edges{
+                    node{
+                      id
+                      contentful_id
+                      slug
+                    }
+                  }
+                }
+            }
+            `)
+            .then( result => {
+
+                const gate = path.resolve(`./src/components/template/gate.jsx`)
+
+                const stream = path.resolve(`./src/components/template/stream.jsx`)
+
+                _.each(result.data.allContentfulEvent.edges, edge => {
+
+                    const gatePage = {
+                        path: `/streams/${edge.node.slug}/gate`,
+                        component: slash(gate),
+                        context: {
+                            id: edge.node.id,
+                            contentful_id:  edge.node.contentful_id,
+                            slug: edge.node.slug,
+                        }
+                    }
+                    
+                    const streamPage = {
+                        path: `/streams/${edge.node.slug}`,
+                        component: slash(stream),
+                        context: {
+                            id: edge.node.id,
+                            contentful_id:  edge.node.contentful_id,
+                            slug: edge.node.slug,
+                        }
+                    }
+    
+                    createPage(gatePage)
+
+                    console.log("CREATING PAGE...")
+                    console.log(gatePage)
+                    
+                    createPage(streamPage)
+
+                    console.log("CREATING PAGE...")
+                    console.log(streamPage)
+
+
+                })
+
+                resolve()
+
+            })
 
         })
 
