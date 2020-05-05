@@ -17,7 +17,7 @@ import LockIMG from "../../theme/img/icons/Unlock.svg"
 
 const GatePage = ({ pageContext, data }) => {
 
-    const { title, dateTime, id, image } = data.contentfulEvent
+    const { title, dateTime, id, image, eventbriteId } = data.contentfulEvent
     const { register, handleSubmit, watch, errors, reset } = useForm()
     const [ loading, setLoading ] = useState(false)
     const [ email, setEmail ] = useQueryParam("email", StringParam);
@@ -27,7 +27,7 @@ const GatePage = ({ pageContext, data }) => {
 
         setLoading(true)
 
-        axios.post('https://draft.api.global.live/tickets/redeem', data)
+        axios.post(`${process.env.GATSBY_API_URL}/tickets/${eventbriteId}/redeem`, data)
             .then((response) => {
 
                 const cookies = new Cookies();

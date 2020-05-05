@@ -1,8 +1,9 @@
-import React, { useState } from "react"
-import { graphql } from "gatsby"
+import React from "react"
+import { graphql, navigate, withPrefix } from "gatsby"
 import styled from "styled-components"
 import { up } from "styled-breakpoints"
 import Cookies from "universal-cookie"
+import axios from "axios"
 
 import LogoWhiteIMG from "../../theme/img/logo-white.svg"
 import vars from "../../theme/styles/vars"
@@ -11,15 +12,55 @@ class StreamPage extends React.Component  {
 
    constructor(props){
     super(props)
-    const cookies = new Cookies();
-    console.log('CONSTRUCTOR:The token is:' + cookies.get('token')); 
+    this.timer = null
+    const { pageContext } = this.props
+
+    const cookies = new Cookies()
+    let token = cookies.get('token')
+
+    if(!token || token === undefined){
+      const url = withPrefix(`/streams/${pageContext.slug}/gate`)
+      navigate(url)
+    }
+
+   }
+
+   componentDidMount(){
+    const _this = this
+    this.timer = setInterval(_this.tokenCheck, (30 * 1000))
+    this.tokenCheck()
+   }
+   
+   componentWillUnmount(){
+    clearInterval(this.timer)
+   }
+
+   tokenCheck(){
+    const cookies = new Cookies()
+    let token = cookies.get('token')
+
+    axios.put(`${process.env.GATSBY_API_URL}/tokens/${token}`)
+      .then(response => {
+        console.log(response)
+        if(response.status !=+ 200){
+          const url = withPrefix(`/streams/${this.props.pageContext.slug}/gate`)
+          navigate(url)
+        }
+      })
+      .catch(error => {
+        console.log(error.response)
+        if(error.response.status === 403){
+          const url = withPrefix(`/streams/${this.props.pageContext.slug}/gate`)
+          navigate(url)
+        }
+      })
    }
 
    render(){
 
     const { data, pageContext } = this.props
 
-    const { title, dateTime, youtubeId, image, short } = data.contentfulEvent
+    const { title, youtubeId, image, short } = data.contentfulEvent
 
     return (
         <Container>
@@ -31,7 +72,7 @@ class StreamPage extends React.Component  {
               </Player>
             </Inner>
             <Background>
-              <Image url={`${image.file.url}?w=800`} />
+              <Image url={`${image.file.url}?w=1000`} />
             </Background>
           </Top>
           <Bottom>
@@ -108,9 +149,7 @@ const Bottom = styled.div`
   width:100%;
   background-color:${vars.ORANGE};
   display:flex;
-  align-items:center;
-  justify-content:center;
-
+  
   ${up('xs')}{
     height:50%;
   }
@@ -122,6 +161,8 @@ const Bottom = styled.div`
   }
   ${up('lg')}{
     height:30%;
+    align-items:center;
+    justify-content:center;
   }
   ${up('xl')}{
     height:20%;
@@ -131,12 +172,22 @@ const Bottom = styled.div`
 const Text = styled.div`
   display:flex;
   flex-direction:row;
+  text-align:center;
   width:100%;
   max-width:1200px;
   margin-left:auto;
   margin-right:auto;
   padding-left:20px;
   padding-right:20px;
+
+  ${up('md')}{
+    width:75%;
+  }
+
+  ${up('lg')}{
+    text-align:left;
+    width:100%;
+  }
 `
 
 const Left = styled.div`
@@ -171,8 +222,12 @@ const H3 = styled.h3`
   color:white;
   font-weight:600;
   font-size:40px;
-  margin-top:10px;
+  margin-top:-24px;
   margin-bottom:10px;
+
+  ${up('lg')}{
+    margin-top:10px;
+  }
 `
 
 const P = styled.p`
