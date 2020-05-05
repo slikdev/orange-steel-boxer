@@ -52,8 +52,6 @@ class EventListingComponent extends React.Component {
 
         const { hash, title, events } = this.props
 
-        console.log(events)
-
         return(
             <Container>
                 <Title>{title}</Title>

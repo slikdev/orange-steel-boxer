@@ -1,9 +1,12 @@
 import React, { useState } from "react"
-import { graphql } from "gatsby"
+import { graphql, navigate, withPrefix } from "gatsby"
 import styled from "styled-components"
 import { up } from "styled-breakpoints"
 import moment from "moment-timezone"
+import { useQueryParam, StringParam } from "use-query-params"
 import { useForm } from 'react-hook-form'
+import axios from "axios"
+import Cookies from "universal-cookie"
 
 import Button from "../base/Button/Button"
 import vars from "../../theme/styles/vars"
@@ -14,12 +17,40 @@ import LockIMG from "../../theme/img/icons/Unlock.svg"
 
 const GatePage = ({ pageContext, data }) => {
 
-    console.log(pageContext)
-    console.log(data)
     const { title, dateTime, id, image } = data.contentfulEvent
-    const { register, handleSubmit, watch, errors } = useForm()
+    const { register, handleSubmit, watch, errors, reset } = useForm()
+    const [ loading, setLoading ] = useState(false)
+    const [ email, setEmail ] = useQueryParam("email", StringParam);
+    const [ code, setCode ] = useQueryParam("code", StringParam);
+
     const onSubmit = data => { 
-        console.log(data) 
+
+        setLoading(true)
+
+        axios.post('https://draft.api.global.live/tickets/redeem', data)
+            .then((response) => {
+
+                const cookies = new Cookies();
+                cookies.set('token', response.data._id, { path: '/' });
+
+                const url = withPrefix(`/streams/${pageContext.slug}/`)
+                navigate(url)
+
+            })
+            .catch(error => {
+
+                if(error.response.status === 403){
+                    alert('Code already in use. Please log out of other sessions.')
+                    reset()
+                    setLoading(false)
+                }
+                
+                if(error.response.status === 404){
+                    alert('Code not found.')
+                    reset()
+                    setLoading(false)
+                }
+            })
     }
 
     return (
@@ -33,12 +64,36 @@ const GatePage = ({ pageContext, data }) => {
                             <H1>Ready to enjoy the show?</H1>
                             <P>Simply login below with your email address and unique code you recieved. Please do not share this code, it is a single customer only.</P>
                         </Text>
-                        <Form onSubmit={handleSubmit(onSubmit)}>
-                            <Input name="email" placeholder="Email address" ref={register({ required: true })} error={errors.email} icon={MailIMG} />
-                            <Input name="code" placeholder="Unique code" ref={register({ required: true })}  error={errors.code} icon={LockIMG} />
-                            <Submit type="submit">
+                        <Form onSubmit={handleSubmit(onSubmit)} autocomplete="off">
+                            <Input defaultValue={email} autocomplete="off" name="email" placeholder="Email address" ref={register({ required: true })} error={errors.email} icon={MailIMG} />
+                            <Input defaultValue={code} autocomplete="off" name="code" placeholder="Unique code" ref={register({ required: true })}  error={errors.code} icon={LockIMG} />
+                            {!loading && <Submit type="submit">
                                 <Button type="blue" text={"Sign in"} icon="Eye" onClick={() => null} />
-                            </Submit>
+                            </Submit>}
+                            {loading &&
+                                <LoadingIndiciator>
+                                    <svg width={38} height={38} viewBox="0 0 38 38" stroke="#FFFFFF">
+                                        <g
+                                            transform="translate(1 1)"
+                                            strokeWidth={2}
+                                            fill="none"
+                                            fillRule="evenodd"
+                                        >
+                                            <circle strokeOpacity={0.5} cx={18} cy={18} r={18} />
+                                            <path d="M36 18c0-9.94-8.06-18-18-18">
+                                            <animateTransform
+                                                attributeName="transform"
+                                                type="rotate"
+                                                from="0 18 18"
+                                                to="360 18 18"
+                                                dur="1s"
+                                                repeatCount="indefinite"
+                                            />
+                                            </path>
+                                        </g>
+                                    </svg>
+                                </LoadingIndiciator>
+                            }
                         </Form>
                     </Inner>
                 </Content>
@@ -79,6 +134,15 @@ const Container = styled.div`
     }
 
 `
+
+const LoadingIndiciator = styled.div`
+    margin-top:20px;
+
+    ${up('lg')}{
+        margin-left:20px;
+    }
+`
+
 
 const Top = styled.div`
     width:100%;

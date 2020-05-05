@@ -74,7 +74,7 @@ const ContentfulSliderComponent = ({ id, transition }) => {
           images={images}
           autoResolveDelay={3000}
           onError={() => console.log('image load error')}
-          onSuccess={() => console.log('image load success')}
+          onSuccess={() => {}}
           resolveOnError={true}
           mountChildren={true}
         >
