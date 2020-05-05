@@ -89,14 +89,18 @@ const Top = styled.div`
     opacity:0.6;
 
     ${up('xs')}{
-        height:250px;
+        height:25%;
     }
     
     ${up('sm')}{
-        height:450px;
+        height:25%;
     }
     
     ${up('md')}{
+        height:50%;
+    }
+    
+    ${up('lg')}{
         height:100%;
     }
 `
@@ -123,12 +127,24 @@ const Logo = styled.img`
 
 const Bottom = styled.div`
     width:100%;
-    height:100%;
     background-color:${vars.ORANGE};
     z-index:10;
 
+    ${up('xs')}{
+        height:75%;
+    }
+    
+    ${up('sm')}{
+        height:75%;
+    }
+    
+    ${up('md')}{
+        height:50%;
+    }
+
     ${up('lg')}{
         position:relative;
+        height:100%;
     }
 `
 
