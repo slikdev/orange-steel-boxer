@@ -7,14 +7,19 @@ import Cookies from "universal-cookie"
 import LogoWhiteIMG from "../../theme/img/logo-white.svg"
 import vars from "../../theme/styles/vars"
 
-const StreamPage = ({ pageContext, data }) => {
+class StreamPage extends React.Component  {
 
-    console.log(pageContext)
-    console.log(data)
-    const { title, dateTime, youtubeId, image } = data.contentfulEvent
-
+   constructor(props){
+    super(props)
     const cookies = new Cookies();
-    console.log('The token is:' + cookies.get('token')); 
+    console.log('CONSTRUCTOR:The token is:' + cookies.get('token')); 
+   }
+
+   render(){
+
+    const { data, pageContext } = this.props
+
+    const { title, dateTime, youtubeId, image, short } = data.contentfulEvent
 
     return (
         <Container>
@@ -26,12 +31,24 @@ const StreamPage = ({ pageContext, data }) => {
               </Player>
             </Inner>
             <Background>
-              <Image url={image.file.url} />
+              <Image url={`${image.file.url}?w=800`} />
             </Background>
           </Top>
-          <Bottom></Bottom>
+          <Bottom>
+            <Text>
+              <Left>
+                <Avatar url={`${image.file.url}?w=400`} />
+              </Left>
+              <Right>
+                <H3>{title}</H3>
+                <P>{short}</P>
+              </Right>
+            </Text>
+          </Bottom>
         </Container>
     )
+
+   }
 
 }
 
@@ -59,12 +76,11 @@ const Top = styled.div`
     height:60%;
   }
   ${up('lg')}{
-    height:80%;
+    height:70%;
   }
   ${up('xl')}{
     height:80%;
   }
-  
 
 `
 
@@ -91,6 +107,9 @@ const Image = styled.div`
 const Bottom = styled.div`
   width:100%;
   background-color:${vars.ORANGE};
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
   ${up('xs')}{
     height:50%;
@@ -102,11 +121,64 @@ const Bottom = styled.div`
     height:40%;
   }
   ${up('lg')}{
-    height:20%;
+    height:30%;
   }
   ${up('xl')}{
     height:20%;
   }
+`
+
+const Text = styled.div`
+  display:flex;
+  flex-direction:row;
+  width:100%;
+  max-width:1200px;
+  margin-left:auto;
+  margin-right:auto;
+  padding-left:20px;
+  padding-right:20px;
+`
+
+const Left = styled.div`
+  display:none;
+
+  ${up('lg')}{
+    display:flex;
+  }
+`
+
+const Right = styled.div`
+  ${up('lg')}{
+    width:60%;
+  }
+`
+
+const Avatar = styled.div`
+
+  ${up('lg')}{
+    width:160px;
+    height:160px;
+  }
+
+  margin-right:30px;
+  border-radius:12px;
+  ${props => props.url ? `background-image:url(${props.url})` : ``};
+  background-size:cover;
+  background-position:center center;
+`
+
+const H3 = styled.h3`
+  color:white;
+  font-weight:600;
+  font-size:40px;
+  margin-top:10px;
+  margin-bottom:10px;
+`
+
+const P = styled.p`
+  color:white;
+  font-size:14px;
+  line-height:20px;
 `
 
 const Logo = styled.img`
@@ -157,8 +229,8 @@ const Player = styled.div`
   }
   
   ${up('lg')}{
-    margin-top:110px;
-    width:600px;
+    margin-top:100px;
+    width:540px;
   }
 
   ${up('xl')}{
@@ -207,6 +279,7 @@ query StreamQuery($slug:String!){
       title
       dateTime
       youtubeId
+      short
       image{
         file{
           url
