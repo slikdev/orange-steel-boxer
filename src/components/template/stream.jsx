@@ -47,8 +47,25 @@ const Container = styled.div`
 
 const Top = styled.div`
   width:100%;
-  height:80%;
   position:relative;
+
+  ${up('xs')}{
+    height:50%;
+  }
+  ${up('sm')}{
+    height:50%;
+  }
+  ${up('md')}{
+    height:60%;
+  }
+  ${up('lg')}{
+    height:80%;
+  }
+  ${up('xl')}{
+    height:80%;
+  }
+  
+
 `
 
 const Background = styled.div`
@@ -73,8 +90,23 @@ const Image = styled.div`
 
 const Bottom = styled.div`
   width:100%;
-  height:20%;
   background-color:${vars.ORANGE};
+
+  ${up('xs')}{
+    height:50%;
+  }
+  ${up('sm')}{
+    height:50%;
+  }
+  ${up('md')}{
+    height:40%;
+  }
+  ${up('lg')}{
+    height:20%;
+  }
+  ${up('xl')}{
+    height:20%;
+  }
 `
 
 const Logo = styled.img`
@@ -111,17 +143,17 @@ const Player = styled.div`
 
   ${up('xs')}{
     width:90%;
-    margin-top:120px;
+    margin-top:80px;
   }
   
   ${up('sm')}{
     width:90%;
-    margin-top:100px;
+    margin-top:120px;
   }
 
   ${up('md')}{
     width:720px;
-    margin-top:200px;
+    margin-top:120px;
   }
   
   ${up('lg')}{
