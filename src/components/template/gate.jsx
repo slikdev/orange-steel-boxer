@@ -29,8 +29,10 @@ const GatePage = ({ pageContext, data }) => {
                 <Logo src={LogoWhiteIMG} />
                 <Content>
                     <Inner>
-                        <H1>Ready to enjoy the show?</H1>
-                        <P>Simply login below with your email address and unique code you recieved. Please do not share this code, it is a single customer only.</P>
+                        <Text>
+                            <H1>Ready to enjoy the show?</H1>
+                            <P>Simply login below with your email address and unique code you recieved. Please do not share this code, it is a single customer only.</P>
+                        </Text>
                         <Form onSubmit={handleSubmit(onSubmit)}>
                             <Input name="email" placeholder="Email address" ref={register({ required: true })} error={errors.email} icon={MailIMG} />
                             <Input name="code" placeholder="Unique code" ref={register({ required: true })}  error={errors.code} icon={LockIMG} />
@@ -87,11 +89,11 @@ const Top = styled.div`
     opacity:0.6;
 
     ${up('xs')}{
-        height:50%;
+        height:250px;
     }
     
     ${up('sm')}{
-        height:75%;
+        height:450px;
     }
     
     ${up('md')}{
@@ -158,7 +160,19 @@ const Content = styled.div`
 
 const Inner = styled.div`
 
+    ${up('lg')}{
+        text-align:left;
+        margin-top:100px;
+    }
 `
+
+const Text = styled.div`
+
+    ${up('lg')}{
+        margin-left:10px;
+    }
+`
+
 
 const H1 = styled.h1`
     color:white;
@@ -211,6 +225,7 @@ const Form = styled.form`
 
      ${up('lg')}{
         width:75%;
+        margin-left:0px;
      }
 `
 
