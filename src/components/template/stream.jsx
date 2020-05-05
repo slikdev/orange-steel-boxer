@@ -31,10 +31,33 @@ class StreamPage extends React.Component  {
     const _this = this
     this.timer = setInterval(_this.tokenCheck, (30 * 1000))
     this.tokenCheck()
+    window.addEventListener("resize", _this.resizePlayer)
+    this.resizePlayer()
    }
    
    componentWillUnmount(){
     clearInterval(this.timer)
+   }
+
+   resizePlayer(){
+
+    const h = document.getElementById('inner').offsetHeight - 40
+    const w = document.getElementById('inner').offsetWidth
+    const ratio = 16 / 9
+    let width = ratio * h
+
+    if(width >= w)
+      width = w
+
+    if(width <= 200)
+      width = 280
+
+    console.log('h:'+h)
+    console.log('w:'+w)
+    console.log('width:'+width)
+
+    document.getElementById('player').style.width = `${(width)}px`
+
    }
 
    tokenCheck(){
@@ -44,8 +67,9 @@ class StreamPage extends React.Component  {
     axios.put(`${process.env.GATSBY_API_URL}/tokens/${token}`)
       .then(response => {
         console.log(response)
-        if(response.status !=+ 200){
+        if(response.status !== 200){
           if (typeof window !== "undefined") {
+            cookies.remove('token', { path: '/' })
             const url = withPrefix(`/streams/${this.props.pageContext.slug}/gate`)
             navigate(url)
           }
@@ -53,8 +77,9 @@ class StreamPage extends React.Component  {
       })
       .catch(error => {
         console.log(error.response)
-        if(error.response.status === 403){
+        if(error.response.status === 403 || error.response.status === 404){
           if (typeof window !== "undefined") {
+            cookies.remove('token', { path: '/' });
             const url = withPrefix(`/streams/${this.props.pageContext.slug}/gate`)
             navigate(url)
           }
@@ -65,15 +90,14 @@ class StreamPage extends React.Component  {
    render(){
 
     const { data, pageContext } = this.props
-
     const { title, youtubeId, image, short } = data.contentfulEvent
 
     return (
         <Container>
           <Top>
-            <Inner>
+            <Inner id="inner">
               <Logo src={LogoWhiteIMG} />
-              <Player>
+              <Player id="player">
                 <YoutubeEmbed id={youtubeId} autoplay={true} />
               </Player>
             </Inner>
@@ -115,6 +139,7 @@ const Top = styled.div`
 
   ${up('xs')}{
     height:50%;
+    padding-top:90px;
   }
   ${up('sm')}{
     height:50%;
@@ -127,6 +152,7 @@ const Top = styled.div`
   }
   ${up('xl')}{
     height:80%;
+    padding-top:80px;
   }
 
 `
@@ -267,36 +293,32 @@ const Inner = styled.div`
   display:flex;
   width:100%;
   height:100%;
+  align-items:center;
 `
 
 const Player = styled.div`
   margin-left:auto;
   margin-right:auto;
-  margin-top:20px;
-
-  ${up('xs')}{
-    width:90%;
-    margin-top:80px;
-  }
   
   ${up('sm')}{
-    width:90%;
-    margin-top:120px;
+    padding-left:10px;
+    padding-right:10px;
   }
 
   ${up('md')}{
-    width:720px;
-    margin-top:120px;
+    padding-left:20px;
+    padding-right:20px;
+    padding-bottom: 0px;
   }
   
   ${up('lg')}{
-    margin-top:100px;
-    width:540px;
+    padding-left:10px;
+    padding-right:10px;
   }
 
   ${up('xl')}{
-    margin-top:160px;
-    width:1200px;
+    padding-left:20px;
+    padding-right:20px;
   }
   
   z-index:10;
