@@ -29,7 +29,7 @@ class StreamPage extends React.Component  {
 
    componentDidMount(){
     const _this = this
-    this.timer = setInterval(_this.tokenCheck, (30 * 1000))
+    this.timer = setInterval(() => _this.tokenCheck(), (30 * 1000))
     this.tokenCheck()
     window.addEventListener("resize", _this.resizePlayer)
     this.resizePlayer()
@@ -52,17 +52,24 @@ class StreamPage extends React.Component  {
     if(width <= 200)
       width = 280
 
-    console.log('h:'+h)
-    console.log('w:'+w)
-    console.log('width:'+width)
-
     document.getElementById('player').style.width = `${(width)}px`
 
    }
 
    tokenCheck(){
+    
+    const { pageContext } = this.props
+
     const cookies = new Cookies()
     let token = cookies.get('token')
+
+    if(!token || token === undefined){
+      if (typeof window !== "undefined") {
+        const url = withPrefix(`/streams/${pageContext.slug}/gate`)
+        navigate(url)
+        return
+      }
+    }
 
     axios.put(`${process.env.GATSBY_API_URL}/tokens/${token}`)
       .then(response => {
@@ -89,7 +96,7 @@ class StreamPage extends React.Component  {
 
    render(){
 
-    const { data, pageContext } = this.props
+    const { data } = this.props
     const { title, youtubeId, image, short } = data.contentfulEvent
 
     return (

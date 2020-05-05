@@ -32,7 +32,7 @@ const GatePage = ({ pageContext, data }) => {
 
                 const cookies = new Cookies();
                 cookies.set('token', response.data._id, { path: '/' });
-                
+
                 if (typeof window !== "undefined") {
                     const url = withPrefix(`/streams/${pageContext.slug}/`)
                     navigate(url)
@@ -262,6 +262,7 @@ const H1 = styled.h1`
     margin:0;
     padding:0;
     margin-bottom:20px;
+    max-width:600px;
 
     ${up('xs')}{
         font-size:30px;
@@ -283,6 +284,7 @@ const P = styled.p`
     margin:0;
     padding:0;
     font-size:14px;
+    max-width:600px;
 
     ${up('md')}{
         font-size:16px;
@@ -296,6 +298,7 @@ const Form = styled.form`
     margin-right:auto;
     margin-top:20px;
     margin-bottom:20px;
+    max-width:400px;
 
      ${up('xs')}{
          width:100%;
