@@ -16,15 +16,15 @@ const RichText = ({ json }) => {
             [BLOCKS.UL_LIST]: (_, children) => <UL>{children}</UL>,
             [BLOCKS.OL_LIST]: (_, children) => <OL>{children}</OL>,
             [BLOCKS.EMBEDDED_ENTRY]: (node) => {
-                console.log("EMBEDDED_ENTRY")
-                console.log(node)
+                //console.log("EMBEDDED_ENTRY")
+                //console.log(node)
                 if(node.data.target.sys.contentType.sys.id === "youtubeEmbed"){
                     return <YoutubeEmbed id={node.data.target.fields.id['en-US']} />
                 }
             },
             [BLOCKS.EMBEDDED_ASSET]: (node) => {
-                console.log("EMBEDDED_ASSET")
-                console.log(node)
+                //console.log("EMBEDDED_ASSET")
+                //console.log(node)
                 if(node.data.target.fields.file['en-US'].contentType === "image/jpeg"){
                     return <IMG src={node.data.target.fields.file['en-US'].url} />
                 }

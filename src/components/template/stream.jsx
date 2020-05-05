@@ -19,8 +19,10 @@ class StreamPage extends React.Component  {
     let token = cookies.get('token')
 
     if(!token || token === undefined){
-      const url = withPrefix(`/streams/${pageContext.slug}/gate`)
-      navigate(url)
+      if (typeof window !== "undefined") {
+        const url = withPrefix(`/streams/${pageContext.slug}/gate`)
+        navigate(url)
+      }
     }
 
    }
@@ -43,15 +45,19 @@ class StreamPage extends React.Component  {
       .then(response => {
         console.log(response)
         if(response.status !=+ 200){
-          const url = withPrefix(`/streams/${this.props.pageContext.slug}/gate`)
-          navigate(url)
+          if (typeof window !== "undefined") {
+            const url = withPrefix(`/streams/${this.props.pageContext.slug}/gate`)
+            navigate(url)
+          }
         }
       })
       .catch(error => {
         console.log(error.response)
         if(error.response.status === 403){
-          const url = withPrefix(`/streams/${this.props.pageContext.slug}/gate`)
-          navigate(url)
+          if (typeof window !== "undefined") {
+            const url = withPrefix(`/streams/${this.props.pageContext.slug}/gate`)
+            navigate(url)
+          }
         }
       })
    }

@@ -32,9 +32,11 @@ const GatePage = ({ pageContext, data }) => {
 
                 const cookies = new Cookies();
                 cookies.set('token', response.data._id, { path: '/' });
-
-                const url = withPrefix(`/streams/${pageContext.slug}/`)
-                navigate(url)
+                
+                if (typeof window !== "undefined") {
+                    const url = withPrefix(`/streams/${pageContext.slug}/`)
+                    navigate(url)
+                }
 
             })
             .catch(error => {
