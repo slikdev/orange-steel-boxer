@@ -100,7 +100,7 @@ const Container = styled.div`
     text-align:center;
 
     ${up('xs')}{
-        margin-bottom:30px;
+        margin-bottom:50px;
         padding-left:10px;
         padding-right:10px;
     }
@@ -110,13 +110,13 @@ const Container = styled.div`
     }
 
     ${up('md')}{
-        margin-bottom:35px;
+        margin-bottom:60px;
         padding-left:20px;
         padding-right:20px;
     }
 
     ${up('lg')}{
-        margin-bottom:40px;
+        margin-bottom:70px;
     }
 
     ${up('xl')}{

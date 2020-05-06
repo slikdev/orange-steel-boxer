@@ -109,6 +109,7 @@ const Title = styled.h3`
     ${up('lg')}{
         font-size:60px;
         font-weight:600;
+        margin-left:10px;
     }
 
     ${up('xl')}{
