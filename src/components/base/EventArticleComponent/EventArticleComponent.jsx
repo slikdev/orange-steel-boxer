@@ -68,7 +68,23 @@ const Top = styled.div`
 const Left = styled.div`
     background-color:black;
     width:100%;
-    height:100%;
+
+    ${up('xs')}{
+        text-align:center;
+        height:30%;
+    }
+
+    ${up('sm')}{
+        height:40%;
+    }
+    
+    ${up('md')}{
+        height:50%;
+    }
+    
+    ${up('lg')}{
+        height:100%;
+    }
 `
 
 const Image = styled.div`
@@ -83,15 +99,25 @@ const Image = styled.div`
 const Right = styled.div`
     background-color:${vars.ORANGE};
     width:100%;
-    height:100%;
+    
     position:relative;
 
     ${up('xs')}{
         text-align:center;
+        height:70%;
+    }
+
+    ${up('sm')}{
+        height:60%;
+    }
+    
+    ${up('md')}{
+        height:50%;
     }
     
     ${up('lg')}{
         text-align:left;
+        height:100%;
     }
 `
 
@@ -223,8 +249,16 @@ const Article = styled.div`
     margin-right:auto;
     padding-left:20px;
     padding-right:20px;
-    padding-top:80px;
-    padding-bottom:80px;
+
+    ${up('xs')}{
+        padding-top:40px;
+        padding-bottom:40px;
+    }
+    
+    ${up('md')}{
+        padding-top:80px;
+        padding-bottom:80px;
+    }
 
     ${up('xl')}{
         padding-left:0px;

@@ -75,17 +75,15 @@ export default Countdown
 const Container = styled.div`
     display:inline-flex;
     flex-direction:row;
-    height:70px;
+    height:68px;
     margin-top:20px;
     max-width:312px;
 `
 
 const Box = styled.div`
     background-color:${vars.DARK_ORANGE};
-    margin-top:4px;
-    margin-bottom:4px;
-    margin-right:4px;
-    width:70px;
+    margin:2px;
+    width:68px;
     height:100%;
     border-radius:12px;
     position:relative;
@@ -103,7 +101,7 @@ const Number = styled.span`
 const Label = styled.span`
     color:white;
     font-weight:600;
-    font-size:10px;
+    font-size:9px;
     display:block;
     position:absolute;
     bottom:10px;
