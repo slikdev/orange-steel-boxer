@@ -75,7 +75,7 @@ export default Countdown
 const Container = styled.div`
     display:inline-flex;
     flex-direction:row;
-    height:74px;
+    height:70px;
     margin-top:20px;
     max-width:312px;
 `
@@ -85,7 +85,7 @@ const Box = styled.div`
     margin-top:4px;
     margin-bottom:4px;
     margin-right:4px;
-    width:74px;
+    width:70px;
     height:100%;
     border-radius:12px;
     position:relative;

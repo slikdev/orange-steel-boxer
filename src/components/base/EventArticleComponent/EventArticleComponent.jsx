@@ -19,12 +19,14 @@ const EventArticleComponent = ({ title, slug, dateTime, short, eventbriteId, eve
                     <Image url={`${image}?w=1000`} />
                 </Left>
                 <Right>
-                    <Title>{title}</Title>
-                    <Text>
-                        <Short>{short}</Short>
-                        <Countdown date={dateTime} />
-                        <Date>{date}</Date>
-                    </Text>
+                    <Content>
+                        <Title>{title}</Title>
+                        <Text>
+                            <Short>{short}</Short>
+                            <Countdown date={dateTime} />
+                            <Date>{date}</Date>
+                        </Text>
+                    </Content>
                 </Right>
             </Top>
             <Article>
@@ -90,6 +92,27 @@ const Right = styled.div`
     
     ${up('lg')}{
         text-align:left;
+    }
+`
+
+const Content = styled.div`
+
+    display:block;
+    position: relative;
+    text-align:center;
+
+    ${up('xs')}{
+        width:100%;
+        height:100%;
+    }
+    
+    ${up('lg')}{
+        width:100%;
+        text-align:left;
+    }
+    
+    ${up('xl')}{
+        width:640px;
     }
 `
 
