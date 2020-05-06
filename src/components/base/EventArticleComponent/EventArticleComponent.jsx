@@ -276,7 +276,7 @@ const Date = styled.span`
 
 const Article = styled.div`
     width:100%;
-    max-width:1280px;
+    max-width:1024px;
     margin-left:auto;
     margin-right:auto;
     padding-left:20px;
