@@ -171,7 +171,7 @@ const Title = styled.h1`
     }
 
     ${up('sm')}{
-        font-size:50px;
+        font-size:40px;
         width:80%;
         margin-top:-24px;
     }
