@@ -40,7 +40,7 @@ const Container = styled.div`
     }
 
     ${up('lg')}{
-        margin-bottom:40px;
+        margin-bottom:60px;
     }
 
     ${up('xl')}{
