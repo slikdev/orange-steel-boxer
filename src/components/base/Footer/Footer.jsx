@@ -7,7 +7,7 @@ import YoutubeDarkIMG from "../../../theme/img/icons/Youtube_black.svg"
 import InstaDarkIMG from "../../../theme/img/icons/Insta_black.svg"
 
 const Footer = () => (
-    <Container>
+    <Container id="footer">
         <SMFooter>
             <SocialSection>
                 <Social>
@@ -72,6 +72,8 @@ const Container = styled.div`
     margin-left:auto;
     margin-right:auto;
     font-weight:600;
+    position:relative;
+    z-index:11;
 
     ${up('xs')}{
         margin-top:3px;

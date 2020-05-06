@@ -83,6 +83,7 @@ const Image = styled.div`
     &:hover{
         transform: scale(1.1);
         opacity:.5;
+        filter: blur(2px);
     }
 `
 

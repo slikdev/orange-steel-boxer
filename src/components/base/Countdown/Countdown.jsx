@@ -14,17 +14,17 @@ class Countdown extends React.Component {
             hours:0,
             mins:0,
             seconds:0,
+            timer: null
         }
-
-        this.timer = null
     }
 
     componentDidMount(){
-        setInterval(() => this.calculateTime(), 1000)
+        let interval = setInterval(() => this.calculateTime(), 1000)
+        this.setState({ interval: interval })
     }
 
     componentWillUnmount(){
-        clearInterval(this.timer)
+        clearInterval(this.state.interval)
     }
 
     calculateTime(){
