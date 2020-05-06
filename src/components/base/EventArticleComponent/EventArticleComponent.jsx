@@ -276,7 +276,7 @@ const Date = styled.span`
 
 const Article = styled.div`
     width:100%;
-    max-width:1024px;
+    max-width:1280px;
     margin-left:auto;
     margin-right:auto;
     padding-left:20px;
@@ -284,19 +284,15 @@ const Article = styled.div`
 
     ${up('xs')}{
         padding-top:40px;
-        padding-bottom:40px;
     }
     
     ${up('md')}{
         padding-top:80px;
-        padding-bottom:80px;
     }
 
     ${up('xl')}{
         padding-left:0px;
         padding-right:0px;
-        padding-top:120px;
-        padding-bottom:120px;
     }
 `
 
