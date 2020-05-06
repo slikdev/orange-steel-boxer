@@ -19,6 +19,7 @@ class Countdown extends React.Component {
     }
 
     componentDidMount(){
+        this.calculateTime()
         let interval = setInterval(() => this.calculateTime(), 1000)
         this.setState({ interval: interval })
     }
