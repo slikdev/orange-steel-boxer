@@ -103,15 +103,17 @@ class Page extends React.Component{
   }
 
   componentDidMount(){
+    const _this = this
     setTimeout(() => {
       let c = document.getElementById('components').offsetHeight
       let f = document.getElementById('footer').offsetHeight
       document.getElementById('decorations').style.height = `${(c + f + 300)}px`
+      _this.shapes()
     }, 10)
     
     if (typeof window !== "undefined" && typeof document !== "undefined") {
       if(window.innerWidth > 1280){
-        this.shapes()
+        _this.shapes()
         window.addEventListener('scroll', () => this.shapes())
       }
     }
