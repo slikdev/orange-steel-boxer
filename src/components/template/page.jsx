@@ -88,6 +88,10 @@ query PageQuery($contentful_id:String!){
         __typename
         id
       }
+      ... on ContentfulEventArticleComponent{
+        __typename
+        id
+      }
       ... on ContentfulInstructionsComponent{
         __typename
         id

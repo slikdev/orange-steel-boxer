@@ -1,6 +1,7 @@
 import ContentfulSliderComponent from "./ContentfulSliderComponent"
 import ContentfulNavigationComponent from "./ContentfulNavigationComponent"
 import ContentfulArticleComponent from "./ContentfulArticleComponent"
+import ContentfulEventArticleComponent from "./ContentfulEventArticleComponent"
 import ContentfulFeaturedNewsComponent from "./ContentfulFeaturedNewsComponent"
 import ContentfulCompanyListComponent from "./ContentfulCompanyListComponent"
 import ContentfulEventListingComponent from "./ContentfulEventListingComponent"
@@ -12,6 +13,7 @@ export default {
     ContentfulCompanyListComponent,
     ContentfulFeaturedNewsComponent,
     ContentfulEventListingComponent,
+    ContentfulEventArticleComponent,
     ContentfulInstructionsComponent,
     ContentfulLineupComponent,
     ContentfulNavigationComponent,

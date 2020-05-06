@@ -1,8 +1,10 @@
 import React from "react"
 import styled from "styled-components"
+import { up } from "styled-breakpoints"
 import { BLOCKS } from "@contentful/rich-text-types"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
+import VideoPlayer from "../VideoPlayer/VideoPlayer"
 import vars from "../../../theme/styles/vars"
 
 const RichText = ({ json }) => {
@@ -16,17 +18,25 @@ const RichText = ({ json }) => {
             [BLOCKS.UL_LIST]: (_, children) => <UL>{children}</UL>,
             [BLOCKS.OL_LIST]: (_, children) => <OL>{children}</OL>,
             [BLOCKS.EMBEDDED_ENTRY]: (node) => {
-                //console.log("EMBEDDED_ENTRY")
-                //console.log(node)
+                console.log("EMBEDDED_ENTRY")
+                console.log(node)
                 if(node.data.target.sys.contentType.sys.id === "youtubeEmbed"){
                     return <YoutubeEmbed id={node.data.target.fields.id['en-US']} />
                 }
             },
             [BLOCKS.EMBEDDED_ASSET]: (node) => {
-                //console.log("EMBEDDED_ASSET")
-                //console.log(node)
+                console.log("EMBEDDED_ASSET")
+                console.log(node)
                 if(node.data.target.fields.file['en-US'].contentType === "image/jpeg"){
                     return <IMG src={node.data.target.fields.file['en-US'].url} />
+                }
+                
+                if(node.data.target.fields.file['en-US'].contentType === "video/mp4"){
+                    return (
+                        <VideoWrapper>
+                            <VideoPlayer hash={`video-${node.data.target.sys.id}`} url={node.data.target.fields.file['en-US'].url} />
+                        </VideoWrapper>
+                    )
                 }
             }
         }
@@ -43,11 +53,37 @@ export default RichText
 
 const Container = styled.div``
 
-const H1 = styled.h1``
+const H1 = styled.h1`
 
-const H2 = styled.h2``
+`
 
-const H3 = styled.h3``
+const H2 = styled.h2`
+
+    ${up('xs')}{
+        font-size:30px;
+    }
+
+    ${up('sm')}{
+
+    }
+
+    ${up('md')}{
+        font-size:30px;
+    }
+
+    ${up('lg')}{
+        font-size:50px;
+    }
+
+    ${up('xl')}{
+
+    }
+
+`
+
+const H3 = styled.h3`
+
+`
 
 const P = styled.p`
     font-size: 16px;
@@ -64,6 +100,14 @@ const OL = styled.ol``
 
 const IMG = styled.img`
     width:100%;
+    margin-top:40px;
+    margin-bottom:40px;
+`
+
+const VideoWrapper = styled.div`
+    width:100%;
+    margin-top:40px;
+    margin-bottom:40px;
 `
 
 const ApectRatioBox = styled.div`
