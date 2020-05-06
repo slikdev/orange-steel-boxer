@@ -33,8 +33,6 @@ const ContentfulSliderComponent = ({ id, transition }) => {
     ).allContentfulSliderComponent.nodes.find(item => item.id === id)
 
     const { slides } = data
-
-    const loadingIndicator = (<div>Loading...</div>)
     let images = []
 
     slides.forEach((slide) => {

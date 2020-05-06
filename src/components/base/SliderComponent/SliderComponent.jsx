@@ -27,7 +27,6 @@ class SliderComponent extends React.Component {
 
         const { slides } = this.props
         const _this = this
-        const titleHeight = document.getElementById('title').offsetHeight;
 
         gsap.registerPlugin(DrawSVGPlugin)
 
@@ -137,7 +136,7 @@ class SliderComponent extends React.Component {
                     })}
                     </Pagination>
                     <Circle id="circle">
-                        <img src={PlayIMG} />
+                        <img src={PlayIMG} alt="stream now" />
                         <CircleText id="circle-text"></CircleText>
                     </Circle>
                     <Text>

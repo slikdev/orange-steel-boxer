@@ -1,6 +1,5 @@
 import React from "react"
 import styled from "styled-components"
-import { up } from "styled-breakpoints"
 
 class VideoPlayer extends React.Component  {
 
@@ -10,7 +9,6 @@ class VideoPlayer extends React.Component  {
     }
     
     componentDidMount() {
-        const scope = this
         if (typeof window !== "undefined" && typeof document !== "undefined") {
             const plyr = require("plyr")
             this.player = new plyr(`#${this.props.hash}`)

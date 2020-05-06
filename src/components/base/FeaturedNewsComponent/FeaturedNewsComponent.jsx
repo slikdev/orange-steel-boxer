@@ -13,7 +13,6 @@ const FeaturedNewsComponent = ({ title, news }) => {
             {news.map((item, index) => {
 
                 const date = moment(item.updatedAt)
-                const tz = moment.tz.guess() 
 
                 return(
                     <Link  key={index}  to={`/news/${item.slug}`}>

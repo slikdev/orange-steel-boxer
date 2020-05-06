@@ -21,7 +21,11 @@ const RichText = ({ json }) => {
                 console.log("EMBEDDED_ENTRY")
                 console.log(node)
                 if(node.data.target.sys.contentType.sys.id === "youtubeEmbed"){
-                    return <YoutubeEmbed id={node.data.target.fields.id['en-US']} />
+                    return (
+                        <VideoWrapper>
+                            <YoutubeEmbed id={node.data.target.fields.id['en-US']} />
+                        </VideoWrapper>
+                    )
                 }
             },
             [BLOCKS.EMBEDDED_ASSET]: (node) => {
@@ -128,6 +132,7 @@ const ApectRatioBox = styled.div`
 const YoutubeEmbed = ({ id }) => (
     <ApectRatioBox>
         <iframe 
+            title="youtube-player"
             width="560" 
             height="349"
             src={`https://www.youtube.com/embed/${id}`} 

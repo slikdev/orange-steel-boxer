@@ -6,7 +6,7 @@ import FacebookDarkIMG from "../../../theme/img/icons/Facebook_black.svg"
 import YoutubeDarkIMG from "../../../theme/img/icons/Youtube_black.svg"
 import InstaDarkIMG from "../../../theme/img/icons/Insta_black.svg"
 
-const Footer = ({ }) => (
+const Footer = () => (
     <Container>
         <SMFooter>
             <SocialSection>

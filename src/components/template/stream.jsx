@@ -352,6 +352,7 @@ const YoutubeEmbed = ({ id, autoplay }) => (
         <iframe 
             width="560" 
             height="349"
+            title="youtube-stream"
             src={`https://www.youtube.com/embed/${id}${(autoplay ? '?autoplay=1' : '')}`} 
             frameBorder="0" 
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 

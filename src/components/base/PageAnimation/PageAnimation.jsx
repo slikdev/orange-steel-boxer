@@ -1,6 +1,5 @@
 import React from "react"
 import Lottie from "react-lottie"
-import { isMobile, isTablet } from "react-device-detect"
 
 import widescreenAnimationData from "./page-transition-landscape.json"
 import portraitAnimationData from "./page-transition-portrait.json"

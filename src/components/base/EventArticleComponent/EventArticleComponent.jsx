@@ -34,7 +34,7 @@ const EventArticleComponent = ({ title, slug, dateTime, short, eventbriteLink, i
                                 { countries.map((country, index) => (<span key={index}>{country}, </span>) )}
                             </Countries>
                             <ButtonWrap>
-                                <a href={eventbriteLink} target="_blank">
+                                <a href={eventbriteLink} target="_blank" rel="noopener noreferrer">
                                     <Button type="blue" text={"BUY TICKET"} icon="Eye" onClick={() => null} />
                                 </a>
                             </ButtonWrap>
@@ -258,10 +258,6 @@ const Short = styled.p`
         font-size:14px;
         line-height:18px;
     }
-`
-
-const CountdownWrap = styled.div`
-    text-align:center;
 `
 
 const Date = styled.span`

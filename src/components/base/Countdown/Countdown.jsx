@@ -1,6 +1,5 @@
 import React from "react"
 import styled from "styled-components"
-import { up } from "styled-breakpoints"
 import moment from "moment-timezone"
 
 import vars from "../../../theme/styles/vars"
