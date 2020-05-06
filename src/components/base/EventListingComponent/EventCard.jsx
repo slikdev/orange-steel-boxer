@@ -15,7 +15,7 @@ const EventCard = ({ title, dateTime, image, slug, category, link }) => {
     const time = date.tz(tz).format('h:mm a')
 
     return(
-        <Link href={link} target="_blank">
+        <Link href={link}>
             <Container>
                 <Text>
                     <Category>{category}</Category>

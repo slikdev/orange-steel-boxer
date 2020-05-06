@@ -14,6 +14,7 @@ const ContentfulEventListingComponent = ({ id, transition }) => {
                 title
                 events{
                   title
+                  slug
                   visible
                   eventbriteLink
                   dateTime

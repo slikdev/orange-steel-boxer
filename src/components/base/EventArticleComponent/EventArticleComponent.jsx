@@ -6,6 +6,9 @@ import moment from "moment-timezone"
 import RichText from "../RichText/RichText"
 import vars from "../../../theme/styles/vars"
 import Countdown from "../Countdown/Countdown"
+import Button from "../Button/Button"
+
+import LineSVG from "../../../theme/img/line.svg"
 
 const EventArticleComponent = ({ title, slug, dateTime, short, eventbriteId, eventbriteLink, category, image, countries, article }) => {
 
@@ -21,10 +24,20 @@ const EventArticleComponent = ({ title, slug, dateTime, short, eventbriteId, eve
                 <Right>
                     <Content>
                         <Title>{title}</Title>
+                        <Line src={LineSVG} />
                         <Text>
                             <Short>{short}</Short>
                             <Countdown date={dateTime} />
                             <Date>{date}</Date>
+                            <Countries>
+                                <p>Available in:</p>
+                                { countries.map((country, index) => (<span key={index}>{country}, </span>) )}
+                            </Countries>
+                            <ButtonWrap>
+                                <a href={eventbriteLink} target="_blank">
+                                    <Button type="blue" text={"BUY TICKET"} icon="Eye" onClick={() => null} />
+                                </a>
+                            </ButtonWrap>
                         </Text>
                     </Content>
                 </Right>
@@ -45,7 +58,7 @@ const Top = styled.div`
     flex-direction:column;
 
     ${up('xs')}{
-        height:550px;
+        height:640px;
     }
 
     ${up('sm')}{
@@ -58,7 +71,7 @@ const Top = styled.div`
 
     ${up('lg')}{
         flex-direction:row;
-        height:580px;
+        height:640px;
     }
 
     ${up('xl')}{
@@ -170,10 +183,10 @@ const Title = styled.h1`
 
     ${up('lg')}{
         position:absolute;
-        font-size:70px;
+        font-size:60px;
         top:120px;
         left:-50px;
-        width:90%;
+        width:100%;
         line-height:70px;
         margin-top:0px;
     }
@@ -184,6 +197,26 @@ const Title = styled.h1`
         left:-50px;
         width:60%;
         line-height:100px;
+    }
+`
+const Line = styled.img`
+    position:absolute;
+
+    ${up('xs')}{
+        display:none;
+    }
+    
+    ${up('lg')}{
+        display:block;
+        top: 0px;
+        left: -42px;
+        width: 1490px;
+    }
+    
+    ${up('xl')}{
+        top: 164px;
+        left: -42px;
+        width: 1860px;
     }
 `
 
@@ -207,7 +240,7 @@ const Text = styled.div`
         margin-left:0;
         width:75%;
         left:60px;
-        top:280px;
+        top:260px;
     }
 
     ${up('xl')}{
@@ -229,7 +262,6 @@ const Short = styled.p`
 
 const CountdownWrap = styled.div`
     text-align:center;
-
 `
 
 const Date = styled.span`
@@ -266,6 +298,24 @@ const Article = styled.div`
         padding-top:120px;
         padding-bottom:120px;
     }
+`
+
+const Countries = styled.div`
+    font-size:12px;
+    line-height:18px;
+    color:white;
+
+    p{
+        margin-bottom:0px;
+    }
+
+    span{
+        font-weight:600;
+    }
+`
+
+const ButtonWrap = styled.div`
+    margin-top:20px;
 `
 
 export default EventArticleComponent

@@ -66,7 +66,7 @@ class EventListingComponent extends React.Component {
                                         image={item.image.file.url}  
                                         slug={item.slug}  
                                         category={item.category.title} 
-                                        link={(item.eventbriteLink ? item.eventbriteLink : "#")} 
+                                        link={`/events/${item.slug}`} 
                                     />
                                 </div>
                             ))}
