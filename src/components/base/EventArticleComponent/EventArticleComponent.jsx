@@ -10,10 +10,10 @@ import Button from "../Button/Button"
 
 import LineSVG from "../../../theme/img/line.svg"
 
-const EventArticleComponent = ({ title, slug, dateTime, short, eventbriteId, eventbriteLink, category, image, countries, article }) => {
+const EventArticleComponent = ({ title, slug, dateTime, short, eventbriteLink, image, countries, article }) => {
 
     const tz = moment.tz.guess()
-    const date = moment.tz(dateTime, tz).format('MMMM Do YYYY, h:mm:ss a z')
+    const date = moment.tz(dateTime, tz).format('MMMM Do YYYY, h:mm a z')
 
     return(
         <Container>

@@ -17,11 +17,7 @@ const ContentfulEventArticleComponent = ({ id, transition }) => {
                   slug
                   dateTime
                   short
-                  eventbriteId
                   eventbriteLink
-                  category{
-                    title
-                  }
                   image{
                     file{
                       url
@@ -44,9 +40,7 @@ const ContentfulEventArticleComponent = ({ id, transition }) => {
             slug={data.event.slug} 
             dateTime={data.event.dateTime} 
             short={data.event.short} 
-            eventbriteId={data.event.eventbriteId} 
             eventbriteLink={data.event.eventbriteLink} 
-            category={data.event.category.title} 
             image={data.event.image.file.url} 
             countries={data.event.countries} 
             article={data.event.article} 
