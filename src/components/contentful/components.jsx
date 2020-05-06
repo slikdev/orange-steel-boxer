@@ -3,6 +3,7 @@ import ContentfulNavigationComponent from "./ContentfulNavigationComponent"
 import ContentfulArticleComponent from "./ContentfulArticleComponent"
 import ContentfulEventArticleComponent from "./ContentfulEventArticleComponent"
 import ContentfulFeaturedNewsComponent from "./ContentfulFeaturedNewsComponent"
+import ContentfulMailchimpComponent from "./ContentfulMailchimpComponent"
 import ContentfulCompanyListComponent from "./ContentfulCompanyListComponent"
 import ContentfulEventListingComponent from "./ContentfulEventListingComponent"
 import ContentfulLineupComponent from "./ContentfulLineupComponent"
@@ -15,6 +16,7 @@ export default {
     ContentfulEventListingComponent,
     ContentfulEventArticleComponent,
     ContentfulInstructionsComponent,
+    ContentfulMailchimpComponent,
     ContentfulLineupComponent,
     ContentfulNavigationComponent,
     ContentfulSliderComponent,

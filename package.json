@@ -42,6 +42,7 @@
     "react-helmet": "^6.0.0",
     "react-hook-form": "^5.6.1",
     "react-lottie": "^1.2.3",
+    "react-mailchimp-subscribe": "^2.1.0",
     "react-preload": "^0.6.0",
     "react-progressive-bg-image": "^3.0.0",
     "slash": "^3.0.0",

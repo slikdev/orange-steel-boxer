@@ -100,6 +100,10 @@ query PageQuery($contentful_id:String!){
         __typename
         id
       }
+      ... on ContentfulMailchimpComponent{
+        __typename
+        id
+      }
     }
   }
   events:allContentfulEvent(limit:100, filter:{visible:{eq:true}}){
