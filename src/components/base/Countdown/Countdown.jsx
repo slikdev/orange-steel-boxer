@@ -73,7 +73,7 @@ class Countdown extends React.Component {
 export default Countdown
 
 const Container = styled.div`
-    display:flex;
+    display:inline-flex;
     flex-direction:row;
     height:74px;
     margin-top:20px;

@@ -9,6 +9,9 @@ import Countdown from "../Countdown/Countdown"
 
 const EventArticleComponent = ({ title, slug, dateTime, short, eventbriteId, eventbriteLink, category, image, countries, article }) => {
 
+    const tz = moment.tz.guess()
+    const date = moment.tz(dateTime, tz).format('MMMM Do YYYY, h:mm:ss a z')
+
     return(
         <Container>
             <Top>
@@ -20,6 +23,7 @@ const EventArticleComponent = ({ title, slug, dateTime, short, eventbriteId, eve
                     <Text>
                         <Short>{short}</Short>
                         <Countdown date={dateTime} />
+                        <Date>{date}</Date>
                     </Text>
                 </Right>
             </Top>
@@ -172,6 +176,21 @@ const Short = styled.p`
         font-size:14px;
         line-height:18px;
     }
+`
+
+const CountdownWrap = styled.div`
+    text-align:center;
+
+`
+
+const Date = styled.span`
+    color:white;
+    display:block;
+    margin-top:20px;
+    margin-bottom:20px;
+    font-size:12px;
+    text-transform:uppercase;
+    font-weight:600;
 `
 
 const Article = styled.div`
