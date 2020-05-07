@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import LineupComponent from "../base/LineupComponent/LineupComponent"
 
-const ContentfulLineupComponent = ({ id, events }) => {
+const ContentfulLineupComponent = ({ id, events, transition }) => {
 
     const data = useStaticQuery(
         graphql`
@@ -24,7 +24,7 @@ const ContentfulLineupComponent = ({ id, events }) => {
         clean.push(event.event)
     })
 
-    return <LineupComponent title={data.title} events={clean} />
+    return <LineupComponent title={data.title} events={clean} transition={transition} />
 }
 
 export default ContentfulLineupComponent

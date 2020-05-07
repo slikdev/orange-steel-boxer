@@ -4,7 +4,7 @@ import { up } from "styled-breakpoints"
 
 import EventCard from "../EventListingComponent/EventCard"
 
-const LineupComponent = ({ title, events }) => {
+const LineupComponent = ({ title, events, transition }) => {
 
     return(
         <Container>
@@ -23,6 +23,7 @@ const LineupComponent = ({ title, events }) => {
                                     slug={item.slug}  
                                     category={item.category.title}  
                                     link={`/events/${item.slug}`} 
+                                    transition={transition}
                                 />
                             </Item>
                         </div>
