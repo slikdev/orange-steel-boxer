@@ -122,13 +122,20 @@ class SliderComponent extends React.Component {
 
     render(){
 
-        const { slides } = this.props
+        const { slides, transition } = this.props
+        console.log(slides)
 
         return (
             <Container>
                 <Content>
                     <ButtonWrap id="button">
-                        <Button type="blue" text={slides[this.state.index].ctaText} icon="Eye" onClick={() => null} />
+                        <TransitionLink 
+                            exit={transition.exit}
+                            entry={transition.entry}
+                            to={slides[this.state.index].link}
+                        >
+                            <Button type="blue" text={slides[this.state.index].ctaText} icon="Eye" onClick={() => null} />
+                        </TransitionLink>
                     </ButtonWrap>
                     <Pagination id="pagination">
                     { slides.map((slide, index) => {
