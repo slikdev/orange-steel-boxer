@@ -114,7 +114,7 @@ class Page extends React.Component{
     if (typeof window !== "undefined" && typeof document !== "undefined") {
       if(window.innerWidth > 1280){
         _this.shapes()
-        window.addEventListener('scroll', () => this.shapes())
+        //window.addEventListener('scroll', () => this.shapes())
       }
     }
   }
@@ -162,65 +162,6 @@ class Page extends React.Component{
 
 
 }
-
-// const Page = ({ pageContext, data }) => {
-
-//     const [ animate, setAnimate ] = useState(false)
-//     const { contentfulPage, events } = data
-//     const { meta, components  } = contentfulPage
-
-//     const transition = {
-//       exit: {
-//         length: 3,
-//         trigger: ({ exit }) => setAnimate(true)
-//       },
-//       entry: {
-//         delay: .8,
-//       },
-//     }
-
-//     useEffect(() => {
-//       if (typeof window !== "undefined" && typeof document !== "undefined") {
-//         if(window.innerWidth > 1280){
-//           window.addEventListener('scroll', function(e) {
-//             document.getElementById("pause-graphic").style.transform = 'rotate(' + (((window.scrollY / window.innerHeight) * 360) / 10) + 'deg)'
-//             document.getElementById("triangle-graphic").style.transform = 'rotate(' + ((((window.scrollY / window.innerHeight) * 360) / 30) * -1) + 'deg)'
-//             document.getElementById("circle-graphic").style.transform = 'scale(' + (((window.scrollY / window.innerHeight) * 0.4)) + ')'
-//           })
-//         }
-//       }
-//     })
-
-//     function createContentfulComponent(id, __typename, i) {
-//         return ( ContentfulComponent => <ContentfulComponent id={id} key={i} transition={transition} events={events.all} />)(contentfulComponents[__typename] )
-//     }
-
-//     return(
-//         <Layout>
-//             <SEO 
-//                 title={meta.title} 
-//                 description={meta.description} 
-//                 image={ ( meta.image ? meta.image.file.url : null  )} 
-//             />
-//             <Main>
-//               <Components>
-//               { components.map((component, i) => createContentfulComponent(component.id, component.__typename, i)) }
-//               </Components>
-//               <Footer />
-//               <Decorations>
-//                 <Pause id="pause-graphic">
-//                   <PauseInner src={PauseSVG} />
-//                 </Pause>
-//                 <Triangle id="triangle-graphic" src={TriangleSVG} />
-//                 <Circle id="circle-graphic" src={CircleSVG} />
-//               </Decorations>
-//             </Main>
-//             <TransitionPortal>
-//               <PageAnimation playing={animate} />
-//             </TransitionPortal>
-//         </Layout>
-//     )
-// }
 
 export default Page 
 
