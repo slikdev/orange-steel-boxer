@@ -18,8 +18,7 @@ const RichText = ({ json }) => {
             [BLOCKS.UL_LIST]: (_, children) => <UL>{children}</UL>,
             [BLOCKS.OL_LIST]: (_, children) => <OL>{children}</OL>,
             [BLOCKS.EMBEDDED_ENTRY]: (node) => {
-                // console.log("EMBEDDED_ENTRY")
-                // console.log(node)
+
                 if(node.data.target.sys.contentType.sys.id === "youtubeEmbed"){
                     return (
                         <VideoWrapper>
@@ -27,10 +26,18 @@ const RichText = ({ json }) => {
                         </VideoWrapper>
                     )
                 }
+
+                if(node.data.target.sys.contentType.sys.id === "questionAnswer"){
+                    return (
+                        <QA>
+                            <Question>{node.data.target.fields.question['en-US']}</Question>
+                            <Answer>{node.data.target.fields.answer['en-US']}</Answer>
+                        </QA>
+                    )
+                }
+
             },
             [BLOCKS.EMBEDDED_ASSET]: (node) => {
-                // console.log("EMBEDDED_ASSET")
-                // console.log(node)
                 if(node.data.target.fields.file['en-US'].contentType === "image/jpeg"){
                     return <IMG src={node.data.target.fields.file['en-US'].url} />
                 }
@@ -142,3 +149,53 @@ const YoutubeEmbed = ({ id }) => (
         </iframe>
     </ApectRatioBox>
 )
+
+const QA = styled.div`
+    display:flex;
+    flex-direction:column;
+
+    ${up('xs')}{
+        margin-bottom:40px;
+        padding-bottom:40px;
+    }
+
+    ${up('md')}{
+        margin-bottom:50px;
+        padding-bottom:50px;
+    }
+
+    ${up('lg')}{
+        margin-bottom:70px;
+        padding-bottom:70px;
+        flex-direction:row;
+    }
+    
+    ${up('xl')}{
+        margin-bottom:100px;
+        padding-bottom:100px;
+    }
+
+    border-bottom:1px solid black;
+`
+
+const Question = styled.div`
+    width:100%;
+    height:100%;
+    font-size:22px;
+    font-weight:600;
+    margin-bottom:20px;
+
+    ${up('lg')}{
+        width:40%;
+    }
+`
+
+const Answer = styled.div`
+    width:100%;
+    height:100%;
+    font-size:16px;
+    line-height:24px;
+    ${up('lg')}{
+        width:60%;
+    }
+`
