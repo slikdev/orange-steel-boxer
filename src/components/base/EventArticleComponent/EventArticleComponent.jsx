@@ -33,8 +33,8 @@ const EventArticleComponent = ({ title, slug, dateTime, short, eventbriteLink, i
                                 <p>Available in:</p>
                                 { countries.map((country, index) => (<span key={index}>{country}, </span>) )}
                             </Countries>
-                            <ButtonWrap>
-                                <Button id="eventbrite-widget-modal-trigger-104263011474" type="blue" text={"BUY TICKET"} icon="Eye" onClick={() => null} />
+                            <ButtonWrap id="eventbrite-widget-modal-trigger-104263011474">
+                                <Button type="blue" text={"BUY TICKET"} icon="Eye" onClick={() => null} />
                             </ButtonWrap>
                         </Text>
                     </Content>
