@@ -27,10 +27,12 @@ const Components = styled.div`
 const Decorations = styled.div`
   display:none;
   overflow:hidden;
-  position:absolute;
+  position:fixed;
   top:0;
   width:100%;
   height:100%;
+  pointer-events:none;
+  opacity:0;
 
   ${up('xl')}{
     display:flex;
@@ -40,7 +42,7 @@ const Decorations = styled.div`
 const Circle = styled.img`
   display:none;
   position: absolute;
-  top: 3340px;
+  top: 850px;
   right: 50%;
   margin-right: 650px;
   z-index:1;
@@ -53,12 +55,12 @@ const Circle = styled.img`
 const Triangle = styled.img`
   display:none;
   position:absolute;
-  top:2550px;
+  top:300px;
   left:50%;
   margin-left:600px;
   z-index:2;
   transition: all .2s ease-out;
-  
+
   ${up('xl')}{
     display:block;
   }
@@ -66,12 +68,13 @@ const Triangle = styled.img`
 const Pause = styled.div`
   display:none;
   position:absolute;
-  top:1000px;
+  /* top:1000px; */
+  top:-250px;
   right:50%;
   margin-right:680px;
   z-index:3;
   transition: all .2s ease-out;
-  
+
   ${up('xl')}{
     display:block;
   }
@@ -109,12 +112,14 @@ class Page extends React.Component{
       let f = document.getElementById('footer').offsetHeight
       document.getElementById('decorations').style.height = `${(c + f + 300)}px`
       _this.shapes()
+
+      document.getElementById("decorations").style.opacity = 0
     }, 10)
     
     if (typeof window !== "undefined" && typeof document !== "undefined") {
       if(window.innerWidth > 1280){
         _this.shapes()
-        //window.addEventListener('scroll', () => this.shapes())
+        window.addEventListener('scroll', () => this.shapes())
       }
     }
   }
@@ -124,9 +129,24 @@ class Page extends React.Component{
   }
 
   shapes(){
+
+    let c = document.getElementById('components').offsetHeight
+    let f = document.getElementById('footer').offsetHeight
+    let h = c + f
+    let p = ((window.scrollY / h) * 100)
+
+    if(h > 2)
+      document.getElementById("decorations").style.opacity = 1
+
     document.getElementById("pause-graphic").style.transform = 'rotate(' + (((window.scrollY / window.innerHeight) * 360) / 10) + 'deg)'
+    document.getElementById("pause-graphic").style.top = `${((p / 2) * 2)}px`
+
+    
     document.getElementById("triangle-graphic").style.transform = 'rotate(' + ((((window.scrollY / window.innerHeight) * 360) / 30) * -1) + 'deg)'
+    document.getElementById("triangle-graphic").style.top = `${(p * 10)}px`
+
     document.getElementById("circle-graphic").style.transform = 'scale(' + (((window.scrollY / window.innerHeight) * 0.4)) + ')'
+
   }
 
   render(){

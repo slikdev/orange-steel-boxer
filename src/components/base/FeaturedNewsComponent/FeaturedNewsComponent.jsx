@@ -3,8 +3,9 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 import { up } from "styled-breakpoints"
 import moment from "moment-timezone"
+import TransitionLink from "gatsby-plugin-transition-link"
 
-const FeaturedNewsComponent = ({ title, news }) => {
+const FeaturedNewsComponent = ({ title, news, transition }) => {
 
     return( 
         <Container>
@@ -15,7 +16,12 @@ const FeaturedNewsComponent = ({ title, news }) => {
                 const date = moment(item.updatedAt)
 
                 return(
-                    <Link  key={index}  to={`/news/${item.slug}`}>
+                    <TransitionLink 
+                        key={index}  
+                        to={`/news/${item.slug}`}
+                        exit={transition.exit}
+                        entry={transition.entry}
+                    >
                         <NewsItem>
                             <NewsText>
                                 <NewsCategory>{item.category.title}</NewsCategory>
@@ -43,7 +49,7 @@ const FeaturedNewsComponent = ({ title, news }) => {
                             </NewsText>
                             <NewsImage url={item.image.file.url} />
                         </NewsItem>
-                    </Link>
+                    </TransitionLink>
                 )
             })}
             </NewsContainer>

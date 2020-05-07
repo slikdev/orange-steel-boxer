@@ -2,10 +2,11 @@ import React from "react"
 import styled from "styled-components"
 import { up } from "styled-breakpoints"
 import moment from "moment-timezone"
+import TransitionLink from "gatsby-plugin-transition-link"
 
 import vars from "../../../theme/styles/vars"
 
-const EventCard = ({ title, dateTime, image, slug, category, link }) => {
+const EventCard = ({ title, dateTime, image, slug, category, link, transition }) => {
 
     const date = moment(dateTime)
     const tz = moment.tz.guess()
@@ -15,7 +16,11 @@ const EventCard = ({ title, dateTime, image, slug, category, link }) => {
     const time = date.tz(tz).format('h:mm a')
 
     return(
-        <Link href={link}>
+        <TransitionLink 
+            to={link}
+            exit={transition.exit}
+            entry={transition.entry}
+        >
             <Container>
                 <Text>
                     <Category>{category}</Category>
@@ -30,7 +35,7 @@ const EventCard = ({ title, dateTime, image, slug, category, link }) => {
                     <Image background={`${image}?h=900`}  />
                 </ImageWrap>
             </Container>
-        </Link>
+        </TransitionLink>
     )
 }
 

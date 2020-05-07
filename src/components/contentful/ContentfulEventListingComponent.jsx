@@ -42,7 +42,12 @@ const ContentfulEventListingComponent = ({ id, transition }) => {
 
     return (
       <React.Fragment>
-        <EventListingComponent hash={id} title={data.title} events={events}  />
+        <EventListingComponent 
+          hash={id} 
+          title={data.title} 
+          events={events} 
+          transition={transition} 
+        />
       </React.Fragment>
     )
 }

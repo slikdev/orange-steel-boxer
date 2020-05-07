@@ -130,7 +130,7 @@ const Image = styled.div`
 `
 
 const Content = styled.div`
-
+   
     ${up('lg')}{
         width:calc(100% - 680px);
         border-bottom-left-radius:0px;

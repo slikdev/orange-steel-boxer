@@ -123,7 +123,6 @@ class SliderComponent extends React.Component {
     render(){
 
         const { slides, transition } = this.props
-        console.log(slides)
 
         return (
             <Container>

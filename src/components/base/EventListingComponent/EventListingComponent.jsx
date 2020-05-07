@@ -67,6 +67,7 @@ class EventListingComponent extends React.Component {
                                         slug={item.slug}  
                                         category={item.category.title} 
                                         link={`/events/${item.slug}`} 
+                                        transition={this.props.transition}
                                     />
                                 </div>
                             ))}
