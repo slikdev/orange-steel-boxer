@@ -22,23 +22,6 @@ export default function HTML(props) {
           dangerouslySetInnerHTML={{ __html: props.body }}
         />
         {props.postBodyComponents}
-        <script
-            dangerouslySetInnerHTML={{
-                __html: `
-                    var exampleCallback = function() {
-                        console.log('Order complete!');
-                    };
-                
-                    window.EBWidgets.createWidget({
-                        widgetType: 'checkout',
-                        eventId: '104263011474',
-                        modal: true,
-                        modalTriggerElementId: 'eventbrite-widget-modal-trigger-104263011474',
-                        onOrderComplete: exampleCallback
-                    });
-                `
-            }}
-        />
       </body>
     </html>
   )

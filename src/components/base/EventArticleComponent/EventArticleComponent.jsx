@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { up } from "styled-breakpoints"
 import moment from "moment-timezone"
+import { Helmet } from "react-helmet"
 
 import RichText from "../RichText/RichText"
 import vars from "../../../theme/styles/vars"
@@ -10,40 +11,61 @@ import Button from "../Button/Button"
 
 import LineSVG from "../../../theme/img/line.svg"
 
-const EventArticleComponent = ({ title, slug, dateTime, short, eventbriteLink, image, countries, article }) => {
+const EventArticleComponent = ({ title, slug, dateTime, short, eventbriteId, image, countries, article }) => {
 
     const tz = moment.tz.guess()
     const date = moment.tz(dateTime, tz).format('MMMM Do YYYY, h:mm a z')
 
     return(
-        <Container>
-            <Top>
-                <Left>
-                    <Image url={`${image}?w=1000`} />
-                </Left>
-                <Right>
-                    <Content>
-                        <Title>{title}</Title>
-                        <Line src={LineSVG} />
-                        <Text>
-                            <Short>{short}</Short>
-                            <Countdown date={dateTime} />
-                            <Date>{date}</Date>
-                            <Countries>
-                                <p>Available in:</p>
-                                { countries.map((country, index) => (<span key={index}>{country}, </span>) )}
-                            </Countries>
-                            <ButtonWrap id="eventbrite-widget-modal-trigger-104263011474">
-                                <Button type="blue" text={"BUY TICKET"} icon="Eye" onClick={() => null} />
-                            </ButtonWrap>
-                        </Text>
-                    </Content>
-                </Right>
-            </Top>
-            <Article>
-                <RichText json={article.json} />
-            </Article>
-        </Container>
+        <React.Fragment>
+            <Helmet>
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                            var exampleCallback = function() {
+                                console.log('Order complete!');
+                            };
+                        
+                            window.EBWidgets.createWidget({
+                                widgetType: 'checkout',
+                                eventId: ${eventbriteId},
+                                modal: true,
+                                modalTriggerElementId: 'eventbrite-widget-modal-trigger-${eventbriteId}',
+                                onOrderComplete: exampleCallback
+                            });
+                        `
+                    }}
+                />
+            </Helmet>
+            <Container>
+                <Top>
+                    <Left>
+                        <Image url={`${image}?w=1000`} />
+                    </Left>
+                    <Right>
+                        <Content>
+                            <Title>{title}</Title>
+                            <Line src={LineSVG} />
+                            <Text>
+                                <Short>{short}</Short>
+                                <Countdown date={dateTime} />
+                                <Date>{date}</Date>
+                                <Countries>
+                                    <p>Available in:</p>
+                                    { countries.map((country, index) => (<span key={index}>{country}, </span>) )}
+                                </Countries>
+                                <ButtonWrap id={`eventbrite-widget-modal-trigger-${eventbriteId}`}>
+                                    <Button type="blue" text={"BUY TICKET"} icon="Eye" onClick={() => null} />
+                                </ButtonWrap>
+                            </Text>
+                        </Content>
+                    </Right>
+                </Top>
+                <Article>
+                    <RichText json={article.json} />
+                </Article>
+            </Container>
+        </React.Fragment>
     )
 
 }

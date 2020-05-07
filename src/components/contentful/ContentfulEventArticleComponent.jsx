@@ -18,6 +18,7 @@ const ContentfulEventArticleComponent = ({ id, transition }) => {
                   dateTime
                   short
                   eventbriteLink
+                  eventbriteId
                   image{
                     file{
                       url
@@ -41,6 +42,7 @@ const ContentfulEventArticleComponent = ({ id, transition }) => {
             dateTime={data.event.dateTime} 
             short={data.event.short} 
             eventbriteLink={data.event.eventbriteLink} 
+            eventbriteId={data.event.eventbriteId} 
             image={data.event.image.file.url} 
             countries={data.event.countries} 
             article={data.event.article} 
