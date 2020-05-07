@@ -18,25 +18,6 @@ const EventArticleComponent = ({ title, slug, dateTime, short, eventbriteId, ima
 
     return(
         <React.Fragment>
-            <Helmet>
-                <script
-                    dangerouslySetInnerHTML={{
-                        __html: `
-                            var exampleCallback = function() {
-                                console.log('Order complete!');
-                            };
-                        
-                            window.EBWidgets.createWidget({
-                                widgetType: 'checkout',
-                                eventId: ${eventbriteId},
-                                modal: true,
-                                modalTriggerElementId: 'eventbrite-widget-modal-trigger-${eventbriteId}',
-                                onOrderComplete: exampleCallback
-                            });
-                        `
-                    }}
-                />
-            </Helmet>
             <Container>
                 <Top>
                     <Left>
@@ -65,6 +46,23 @@ const EventArticleComponent = ({ title, slug, dateTime, short, eventbriteId, ima
                     <RichText json={article.json} />
                 </Article>
             </Container>
+            <Helmet>
+                <script>
+                {`
+                    var exampleCallback = function() {
+                        console.log('Order complete!');
+                    };
+                
+                    window.EBWidgets.createWidget({
+                        widgetType: 'checkout',
+                        eventId: '${eventbriteId}',
+                        modal: true,
+                        modalTriggerElementId: 'eventbrite-widget-modal-trigger-${eventbriteId}',
+                        onOrderComplete: exampleCallback
+                    });
+                `}
+                </script>
+            </Helmet>
         </React.Fragment>
     )
 
