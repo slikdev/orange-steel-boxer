@@ -41,11 +41,6 @@ const EventCard = ({ title, dateTime, image, slug, category, link, transition })
 
 export default EventCard
 
-const Link = styled.a`
-    color:black;
-    text-decoration:none;
-`
-
 const Container = styled.div`
     width:100%;
     height:425px;

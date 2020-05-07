@@ -17,8 +17,8 @@ import LockIMG from "../../theme/img/icons/Unlock.svg"
 
 const GatePage = ({ pageContext, data }) => {
 
-    const { title, dateTime, id, image, eventbriteId } = data.contentfulEvent
-    const { register, handleSubmit, watch, errors, reset } = useForm()
+    const { dateTime, image, eventbriteId } = data.contentfulEvent
+    const { register, handleSubmit, errors, reset } = useForm()
     const [ loading, setLoading ] = useState(false)
     const [ email, setEmail ] = useQueryParam("email", StringParam);
     const [ code, setCode ] = useQueryParam("code", StringParam);

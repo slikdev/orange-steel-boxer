@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 import styled from "styled-components"
 import { up } from "styled-breakpoints"
 import moment from "moment-timezone"

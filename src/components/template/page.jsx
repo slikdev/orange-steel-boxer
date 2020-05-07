@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import styled from "styled-components"
 import { up } from "styled-breakpoints"
 import { graphql } from "gatsby"
@@ -150,7 +150,7 @@ class Page extends React.Component{
   }
 
   render(){
-    const { contentfulPage, events } = this.props.data
+    const { contentfulPage } = this.props.data
     const { meta, components  } = contentfulPage
 
     return(
