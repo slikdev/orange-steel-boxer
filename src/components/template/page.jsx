@@ -256,6 +256,10 @@ query PageQuery($contentful_id:String!){
         __typename
         id
       }
+      ... on ContentfulInformationComponent{
+        __typename
+        id
+      }
       ... on ContentfulCompanyListComponent{
         __typename
         id

@@ -27,9 +27,9 @@ const Footer = () => (
                 </Social>
             </SocialSection>
             <Section>
-                <P>Terms &amp; Conditions<br/></P>
-                <P>FAQs<br/></P>
-                <P>Privacy Policy<br/></P>
+                <P><a href="/terms-and-conditions">Terms &amp; Conditions</a><br/></P>
+                <P><a href="/faqs">FAQs</a><br/></P>
+                <P><a href="/privacy-policy">Privacy Policy</a><br/></P>
             </Section>
             <Section>
                 <P>2020 Global Live Media Pty Ltd</P>
@@ -39,9 +39,9 @@ const Footer = () => (
             <Section>
                 <P>2020 Global Live Media Pty Ltd</P>
                 <P>|</P>
-                <P>Terms &amp; Conditions</P>
-                <P>FAQs</P>
-                <P>Privacy Policy</P>
+                <P><a href="/terms-and-conditions">Terms &amp; Conditions</a></P>
+                <P><a href="/faqs">FAQs</a></P>
+                <P><a href="/privacy-policy">Privacy Policy</a></P>
             </Section>
             <SocialSection>
                 <Social>
@@ -125,6 +125,10 @@ const P = styled.p`
     display:block;
     margin-left:10px;
     margin-right:10px;
+
+    a{
+        color:black;
+    }
 
     ${up('lg')}{
         display:inline-block;
