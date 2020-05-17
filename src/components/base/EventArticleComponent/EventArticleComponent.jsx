@@ -16,6 +16,9 @@ const EventArticleComponent = ({ title, slug, dateTime, short, eventbriteId, ima
     const tz = moment.tz.guess()
     const date = moment.tz(dateTime, tz).format('MMMM Do YYYY, h:mm a z')
 
+    const now = moment()
+    const event = moment.tz(dateTime, tz)
+
     return(
         <React.Fragment>
             <Container>
@@ -29,7 +32,7 @@ const EventArticleComponent = ({ title, slug, dateTime, short, eventbriteId, ima
                             <Line src={LineSVG} />
                             <Text>
                                 <Short>{short}</Short>
-                                <Countdown date={dateTime} />
+                                {!now.isAfter(event) && <Countdown date={dateTime} />}
                                 <Date>{date}</Date>
                                 <Countries>
                                     <p>Available in:</p>
