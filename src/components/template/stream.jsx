@@ -97,16 +97,19 @@ class StreamPage extends React.Component  {
    render(){
 
     const { data } = this.props
-    const { title, youtubeId, image, short } = data.contentfulEvent
+    const { title, videoType, videoId, image, short } = data.contentfulEvent
 
     return (
         <Container>
           <Top>
             <Inner id="inner">
               <Logo src={LogoWhiteIMG} />
-              <Player id="player">
-                <YoutubeEmbed id={youtubeId} autoplay={true} />
-              </Player>
+              {videoType && videoType === "Youtube" && <Player id="player">
+                <YoutubeEmbed id={videoId} autoplay={true} />
+              </Player>}
+              {videoType && videoType === "Vimeo" && <Player id="player">
+                <VimeoEmbed id={videoId} autoplay={true} />
+              </Player>}
             </Inner>
             <Background>
               <Image url={`${image.file.url}?w=1000`} />
@@ -361,6 +364,20 @@ const YoutubeEmbed = ({ id, autoplay }) => (
     </ApectRatioBox>
 )
 
+const VimeoEmbed = ({ id, autoplay }) => (
+    <ApectRatioBox>
+        <iframe 
+            width="560" 
+            height="349"
+            title="vimeo-stream"
+            src={`https://player.vimeo.com/video/${id}${(autoplay ? '?autoplay=1' : '')}`} 
+            frameBorder="0" 
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+            allowFullScreen>
+        </iframe>
+    </ApectRatioBox>
+)
+
 export const streamQuery = graphql`
 query StreamQuery($slug:String!){
     contentfulEvent(slug:{eq:$slug}){
@@ -369,7 +386,8 @@ query StreamQuery($slug:String!){
       eventbriteId
       title
       dateTime
-      youtubeId
+      videoType
+    	videoId
       short
       image{
         file{

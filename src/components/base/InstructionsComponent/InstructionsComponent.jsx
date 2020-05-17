@@ -15,7 +15,9 @@ const InstructionsComponent = ({ title, description, step, instructions, image }
                 <Content>
                     <Top>
                         <Description>{description}</Description>
-                        <Line src={LineSVG} />
+                        <LineWrap>
+                            <Line src={LineSVG} />
+                        </LineWrap>
                         <Title>{title}</Title>
                     </Top>
                     <Bottom>
@@ -319,7 +321,7 @@ const Description = styled.p`
     }
 `
 
-const Line = styled.img`
+const LineWrap = styled.div`
     display:none;
     position:absolute;
 
@@ -327,12 +329,25 @@ const Line = styled.img`
         display:block;
         top: 10px;
         right: -120px;
+        overflow-x: hidden;
+    }
+
+    ${up('xl')}{
+        top: 10px;
+        right: 0px;
+        width: 680px;
+        
+    }
+
+`
+
+const Line = styled.img`
+
+    ${up('lg')}{
         width: 630px;
     }
     
     ${up('xl')}{
-        top: 10px;
-        right: -282px;
         width: 960px;
     }
 `

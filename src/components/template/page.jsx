@@ -254,7 +254,8 @@ query PageQuery($contentful_id:String!){
         slug
         eventbriteId
         eventbriteLink
-        youtubeId
+        videoType
+    	  videoId
         category{
           title
         }
