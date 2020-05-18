@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { up } from "styled-breakpoints"
-import { graphql } from "gatsby"
+import { graphql, navigate, withPrefix } from "gatsby"
 import { TransitionPortal } from "gatsby-plugin-transition-link"
 
 import PageAnimation from "../base/PageAnimation/PageAnimation"
@@ -99,6 +99,14 @@ class Page extends React.Component{
         delay: .8,
       },
     }
+
+    if(process.env.GATSBY_MAINTENANCE === 'true'){
+      if (typeof window !== "undefined") {
+        const url = withPrefix(`/holding`)
+        navigate(url)
+      }
+    }
+
   }
 
   createContentfulComponent(id, __typename, i) {

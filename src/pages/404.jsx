@@ -11,23 +11,3 @@ const NotFoundPage = () => (
 )
 
 export default NotFoundPage
-
-// ${up('xs')}{
-
-// }
-
-// ${up('sm')}{
-
-// }
-
-// ${up('md')}{
-
-// }
-
-// ${up('lg')}{
-
-// }
-
-// ${up('xl')}{
-
-// }

@@ -17,6 +17,13 @@ import LockIMG from "../../theme/img/icons/Unlock.svg"
 
 const GatePage = ({ pageContext, data }) => {
 
+    if(process.env.GATSBY_MAINTENANCE === 'true'){
+        if (typeof window !== "undefined") {
+          const url = withPrefix(`/holding`)
+          navigate(url)
+        }
+    }
+
     const { dateTime, image, eventbriteId } = data.contentfulEvent
     const { register, handleSubmit, errors, reset } = useForm()
     const [ loading, setLoading ] = useState(false)

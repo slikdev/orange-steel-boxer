@@ -17,6 +17,13 @@ class StreamPage extends React.Component  {
     this.timer = null
     const { pageContext } = this.props
 
+    if(process.env.GATSBY_MAINTENANCE === 'true'){
+      if (typeof window !== "undefined") {
+        const url = withPrefix(`/holding`)
+        navigate(url)
+      }
+    }
+
     const cookies = new Cookies()
     let token = cookies.get('token')
 
