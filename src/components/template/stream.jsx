@@ -3,8 +3,10 @@ import { graphql, navigate, withPrefix } from "gatsby"
 import styled from "styled-components"
 import { up } from "styled-breakpoints"
 import Cookies from "universal-cookie"
+import moment from "moment-timezone"
 import axios from "axios"
 
+import Countdown from "../base/Countdown/Countdown"
 import LogoWhiteIMG from "../../theme/img/logo-white.svg"
 import vars from "../../theme/styles/vars"
 
@@ -97,7 +99,11 @@ class StreamPage extends React.Component  {
    render(){
 
     const { data } = this.props
-    const { title, videoType, videoId, image, short } = data.contentfulEvent
+    const { title, videoType, videoId, image, short, dateTime } = data.contentfulEvent
+
+    const tz = moment.tz.guess()
+    const now = moment()
+    const event = moment.tz(dateTime, tz)
 
     return (
         <Container>
@@ -120,9 +126,18 @@ class StreamPage extends React.Component  {
               <Left>
                 <Avatar url={`${image.file.url}?w=400`} />
               </Left>
-              <Right>
+              <Middle>
                 <H3>{title}</H3>
                 <P>{short}</P>
+              </Middle>
+              <Right>
+                {!now.isAfter(event) && (
+                  <React.Fragment>
+                    <Short>Stream starts in</Short>
+                    <Countdown date={dateTime} />
+                  </React.Fragment>
+                  )
+                }
               </Right>
             </Text>
           </Bottom>
@@ -194,6 +209,7 @@ const Bottom = styled.div`
   
   ${up('xs')}{
     height:50%;
+    min-height:400px;
   }
   ${up('sm')}{
     height:50%;
@@ -205,6 +221,7 @@ const Bottom = styled.div`
     height:30%;
     align-items:center;
     justify-content:center;
+    min-height:30%;
   }
   ${up('xl')}{
     height:20%;
@@ -213,7 +230,7 @@ const Bottom = styled.div`
 
 const Text = styled.div`
   display:flex;
-  flex-direction:row;
+  flex-direction:column;
   text-align:center;
   width:100%;
   max-width:1200px;
@@ -224,12 +241,26 @@ const Text = styled.div`
 
   ${up('md')}{
     width:75%;
+    
   }
 
   ${up('lg')}{
     text-align:left;
     width:100%;
+    flex-direction:row;
   }
+`
+
+const Short = styled.p`
+  font-size:14px;
+  font-weight:600;
+  text-transform:uppercase;
+  color:white;
+  width:100%;
+  margin-bottom:0;
+  display: inline-block;
+  margin-left:auto;
+  margin-right:auto;
 `
 
 const Left = styled.div`
@@ -240,9 +271,22 @@ const Left = styled.div`
   }
 `
 
-const Right = styled.div`
+const Middle = styled.div`
+display:block;
   ${up('lg')}{
-    width:60%;
+    width:70%;
+    padding-right:30px;
+  }
+  ${up('xl')}{
+    width:70%;
+  }
+`
+
+const Right = styled.div`
+  display:block;
+  ${up('lg')}{
+    width:30%;
+    text-align:center;
   }
 `
 
