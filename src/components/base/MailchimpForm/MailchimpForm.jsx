@@ -1,13 +1,14 @@
 import React from "react"
+import PropTypes from "prop-types"
 import styled from "styled-components"
 import { up } from "styled-breakpoints"
 import MailchimpSubscribe from "react-mailchimp-subscribe"
 
 import vars from "../../../theme/styles/vars"
 
-const MailchimpForm = ({ url }) => {
+const MailchimpForm = ({ url, title, description, mode }) => {
 
-    const CustomForm = ({ status, message, onValidated }) => {
+    const CustomForm = ({ status, message, onValidated, mode }) => {
 
         let email
 
@@ -20,7 +21,7 @@ const MailchimpForm = ({ url }) => {
       
         return (
             <div>
-                <Form status={status}>
+                <Form status={status} mode={mode}>
                     <input
                         ref={node => (email = node)}
                         type="email"
@@ -29,7 +30,7 @@ const MailchimpForm = ({ url }) => {
                     {status !== "sending" &&<Button status={status} onClick={submit}>Submit</Button>}
                     {status === "sending" && 
                         <LoadingIndicator>
-                            <svg width={38} height={38} viewBox="0 0 38 38" stroke="#E83F32">
+                            <svg width={38} height={38} viewBox="0 0 38 38" stroke={( mode === 'dark' ? "#E83F32" : "#47B6D8" )}>
                             <g
                                 transform="translate(1 1)"
                                 strokeWidth={2}
@@ -55,7 +56,7 @@ const MailchimpForm = ({ url }) => {
                 <div>
                 {status === "error" && (
                 <div
-                    style={{ color: "red", marginTop:10 }}
+                    style={{ color: (mode === 'dark' ? "red" : "#F8E71C"), marginTop:10, width:"60%", marginLeft:"auto", marginRight:"auto" }}
                     dangerouslySetInnerHTML={{ __html: message }}
                 />
                 )}
@@ -72,8 +73,8 @@ const MailchimpForm = ({ url }) => {
 
     return(
         <Container>
-            <Title>Never miss a release</Title>
-            <p>Make sure you don’t miss your favourite artist releases, sign up to our mailing list today</p>
+            {title && <Title>{title}</Title>}
+            {description && <p>{description}</p>}
             <MailchimpSubscribe
                 url={url}
                 render={({ subscribe, status, message }) => (
@@ -81,12 +82,24 @@ const MailchimpForm = ({ url }) => {
                         status={status}
                         message={message}
                         onValidated={formData => subscribe(formData)}
+                        mode={mode}
                     />
                 )}
             />
         </Container>
 
     )
+}
+
+MailchimpForm.propTypes = {
+    url: PropTypes.string,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    mode: PropTypes.string,
+}
+
+MailchimpForm.defaultProps = {
+    mode: 'dark'
 }
 
 export default MailchimpForm
@@ -145,7 +158,8 @@ const Title = styled.h3`
 
 const Form = styled.div`
     display:inline-flex;
-    ${props => props.status === "success" ? `border:1px solid ${vars.GREEN};` : `border:1px solid ${vars.ORANGE};`}
+    ${props => props.status === "success" ? `border:1px solid ${vars.GREEN} !important;` : `border:1px solid ${vars.ORANGE};`}
+    border-color:${ props => props.mode === 'dark' ? vars.ORANGE : 'white' };
     border-radius:50px;
     padding:6px;
     margin-top:10px;
@@ -155,18 +169,21 @@ const Form = styled.div`
 
     input{
         border:none;
+        background-color: transparent;
+        color:${ props => props.mode === 'dark' ? vars.ORANGE : 'white' };
+
         ::-webkit-input-placeholder {
-            color: black;
+            color: ${ props => props.mode === 'dark' ? 'black' : 'white' };
             opacity:.4;
         }
 
         :-ms-input-placeholder { 
-            color: black;
+            color: ${ props => props.mode === 'dark' ? 'black' : 'white' };
             opacity:.4;
         }
 
         ::placeholder {
-            color: black;
+            color: ${ props => props.mode === 'dark' ? 'black' : 'white' };
             opacity:.4;
         }
     }

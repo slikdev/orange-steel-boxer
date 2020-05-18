@@ -8,10 +8,10 @@ import Button from "../Button/Button"
 import LogoWhiteIMG from "./icons/logo-white.svg"
 import LogoDarkIMG from "./icons/logo-dark.svg"
 import FacebookIMG from "./icons/Facebook.svg"
-import YoutubeIMG from "./icons/Youtube.svg"
+import VimeoIMG from "./icons/Vimeo.svg"
 import InstaIMG from "./icons/Insta.svg"
 import FacebookDarkIMG from "./icons/Facebook_black.svg"
-import YoutubeDarkIMG from "./icons/Youtube_black.svg"
+import VimeoDarkIMG from "./icons/Vimeo_black.svg"
 import InstaDarkIMG from "./icons/Insta_black.svg"
 
 const Nav = styled.div`
@@ -152,17 +152,17 @@ const NavigationComponent = ({ theme, fixed, transition }) => (
     <Nav fixed={fixed}>
         <SocialIcons>
             <Social>
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.facebook.com/globalliveonline" target="_blank" rel="noopener noreferrer">
                     <img src={theme === 'light' ? FacebookIMG : FacebookDarkIMG} alt="facebook" />
                 </a>
             </Social>
             <Social>
-                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
-                    <img src={theme === 'light' ? YoutubeIMG : YoutubeDarkIMG} alt="youtube" />
+                <a href="https://vimeo.com/globalliveonline" target="_blank" rel="noopener noreferrer">
+                    <img src={theme === 'light' ? VimeoIMG : VimeoDarkIMG} alt="vimeo" />
                 </a>
             </Social>
             <Social>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.instagram.com/globalliveonline" target="_blank" rel="noopener noreferrer">
                     <img src={theme === 'light' ? InstaIMG : InstaDarkIMG}  alt="instagram" />
                 </a>
             </Social>

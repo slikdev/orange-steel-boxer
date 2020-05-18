@@ -17,7 +17,13 @@ const ContentfulMailchimpComponent = ({ id }) => {
         `
     ).allContentfulMailchimpComponent.nodes.find(item => item.id === id)
 
-    return (<MailchimpForm url={data.listURL} />)
+    return (
+      <MailchimpForm 
+        url={data.listURL} 
+        title="Never miss a release" 
+        description="Make sure you don’t miss your favourite artist releases, sign up to our mailing list today" 
+      />
+    )
 }
 
 export default ContentfulMailchimpComponent
