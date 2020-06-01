@@ -10,6 +10,8 @@ const ContentfulMailchimpComponent = ({ id }) => {
             allContentfulMailchimpComponent(limit:10){
               nodes{
                 id
+                title
+                description
                 listURL
               }
             }
@@ -20,8 +22,8 @@ const ContentfulMailchimpComponent = ({ id }) => {
     return (
       <MailchimpForm 
         url={data.listURL} 
-        title="Never miss an event" 
-        description="Make sure you don’t miss your favourite events, sign up to our mailing list today" 
+        title={data.title} 
+        description={data.description}
       />
     )
 }
