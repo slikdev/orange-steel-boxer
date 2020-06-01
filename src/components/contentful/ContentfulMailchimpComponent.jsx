@@ -20,8 +20,8 @@ const ContentfulMailchimpComponent = ({ id }) => {
     return (
       <MailchimpForm 
         url={data.listURL} 
-        title="Never miss a release" 
-        description="Make sure you don’t miss your favourite artist releases, sign up to our mailing list today" 
+        title="Never miss an event" 
+        description="Make sure you don’t miss your favourite events, sign up to our mailing list today" 
       />
     )
 }

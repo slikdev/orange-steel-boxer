@@ -4,6 +4,7 @@ import { up } from "styled-breakpoints"
 
 import FacebookDarkIMG from "../../../theme/img/icons/Facebook_black.svg"
 import YoutubeDarkIMG from "../../../theme/img/icons/Youtube_black.svg"
+import VimeoDarkIMG from "../../../theme/img/icons/Vimeo_black.svg"
 import InstaDarkIMG from "../../../theme/img/icons/Insta_black.svg"
 
 const Footer = () => (
@@ -11,17 +12,17 @@ const Footer = () => (
         <SMFooter>
             <SocialSection>
                 <Social>
-                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.facebook.com/globalliveonline/" target="_blank" rel="noopener noreferrer">
                         <img src={FacebookDarkIMG} alt="facebook" />
                     </a>
                 </Social>
                 <Social>
-                    <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
-                        <img src={YoutubeDarkIMG} alt="youtube" />
+                    <a href="https://vimeo.com/globalliveonline" target="_blank" rel="noopener noreferrer">
+                        <img src={VimeoDarkIMG} alt="youtube" />
                     </a>
                 </Social>
                 <Social>
-                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.instagram.com/globalliveonline/" target="_blank" rel="noopener noreferrer">
                         <img src={InstaDarkIMG}  alt="instagram" />
                     </a>
                 </Social>
@@ -45,17 +46,17 @@ const Footer = () => (
             </Section>
             <SocialSection>
                 <Social>
-                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.facebook.com/globalliveonline/" target="_blank" rel="noopener noreferrer">
                         <img src={FacebookDarkIMG} alt="facebook" />
                     </a>
                 </Social>
                 <Social>
-                    <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
-                        <img src={YoutubeDarkIMG} alt="youtube" />
+                    <a href="https://vimeo.com/globalliveonline" target="_blank" rel="noopener noreferrer">
+                        <img src={VimeoDarkIMG} alt="youtube" />
                     </a>
                 </Social>
                 <Social>
-                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.instagram.com/globalliveonline/" target="_blank" rel="noopener noreferrer">
                         <img src={InstaDarkIMG}  alt="instagram" />
                     </a>
                 </Social>
