@@ -8,10 +8,11 @@ import RichText from "../RichText/RichText"
 import vars from "../../../theme/styles/vars"
 import Countdown from "../Countdown/Countdown"
 import Button from "../Button/Button"
+import SocialLinks from "../SocialLinks/SocialLinks"
 
 import LineSVG from "../../../theme/img/line.svg"
 
-const EventArticleComponent = ({ title, slug, dateTime, short, eventbriteId, image, countries, article }) => {
+const EventArticleComponent = ({ title, slug, dateTime, short, eventbriteId, image, countries, article, socialLinks }) => {
 
     const tz = moment.tz.guess()
     const date = moment.tz(dateTime, tz).format('MMMM Do YYYY, h:mm a z')
@@ -47,6 +48,7 @@ const EventArticleComponent = ({ title, slug, dateTime, short, eventbriteId, ima
                 </Top>
                 <Article>
                     <RichText json={article.json} />
+                    <SocialLinks links={socialLinks} />
                 </Article>
             </Container>
             <Helmet>

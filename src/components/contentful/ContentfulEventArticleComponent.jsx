@@ -28,6 +28,7 @@ const ContentfulEventArticleComponent = ({ id, transition }) => {
                   article{
                     json
                   }
+                  socialLinks
                 }
               }
             }
@@ -46,6 +47,7 @@ const ContentfulEventArticleComponent = ({ id, transition }) => {
             image={data.event.image.file.url} 
             countries={data.event.countries} 
             article={data.event.article} 
+            socialLinks={data.event.socialLinks} 
         />
     )
 }
