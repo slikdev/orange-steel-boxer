@@ -26,6 +26,19 @@ const RichText = ({ json }) => {
                         </VideoWrapper>
                     )
                 }
+                
+                if(node.data.target.sys.contentType.sys.id === "spotifyEmbed"){
+                    return (
+                        <SpotifyWrapper>
+                            <SpotifyFrame 
+                                src={`https://open.spotify.com/embed${node.data.target.fields.uri['en-US']}`} 
+                                frameBorder="0" 
+                                allowtransparency="true" 
+                                allow="encrypted-media" 
+                            />
+                        </SpotifyWrapper>
+                    )
+                }
 
                 if(node.data.target.sys.contentType.sys.id === "questionAnswer"){
                     return (
@@ -197,5 +210,20 @@ const Answer = styled.div`
     line-height:24px;
     ${up('lg')}{
         width:60%;
+    }
+`
+
+const SpotifyWrapper = styled.div`
+    margin-top:30px;
+    margin-bottom:30px;
+`
+
+const SpotifyFrame = styled.iframe`
+    width:100%;
+    height:300px;
+
+    ${up('lg')}{
+        width:400px;
+        height:400px;
     }
 `
