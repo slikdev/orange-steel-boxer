@@ -7,16 +7,12 @@ import vars from "../../../theme/styles/vars"
 
 class Countdown extends React.Component {
 
-    constructor(props){
-        super(props)
-
-        this.state = {
-            days:0,
-            hours:0,
-            mins:0,
-            seconds:0,
-            timer: null
-        }
+    state = {
+        days:0,
+        hours:0,
+        mins:0,
+        seconds:0,
+        timer: null
     }
 
     componentDidMount(){
