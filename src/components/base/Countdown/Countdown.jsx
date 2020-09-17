@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { up } from "styled-breakpoints"
 import moment from "moment-timezone"
 
 import vars from "../../../theme/styles/vars"
@@ -22,6 +23,7 @@ class Countdown extends React.Component {
         this.calculateTime()
         let interval = setInterval(() => this.calculateTime(), 1000)
         this.setState({ interval: interval })
+        console.log(this.props.date)
     }
 
     componentWillUnmount(){
@@ -31,12 +33,14 @@ class Countdown extends React.Component {
     calculateTime(){
 
         const tz = moment.tz.guess()
-        const date = moment.tz(this.props.date, tz)
+        const date = moment(this.props.date)
         const now = new Date()
         const diff = (date.valueOf() / 1000) - (now.getTime() / 1000)
         const duration = moment.duration(diff * 1000, 'milliseconds')
 
+
         this.setState({
+            months: duration.months(),
             days: duration.days(),
             hours: duration.hours(),
             mins: duration.minutes(),
@@ -48,6 +52,11 @@ class Countdown extends React.Component {
     render(){
         return(
             <Container>
+                {this.state.months > 0 && 
+                <Box>
+                    <Number>{this.state.months}</Number>
+                    <Label>month{this.state.months > 1 && `s`}</Label>
+                </Box>}
                 <Box>
                     <Number>{this.state.days}</Number>
                     <Label>days</Label>
@@ -78,6 +87,12 @@ const Container = styled.div`
     height:68px;
     margin-top:20px;
     max-width:312px;
+
+    ${up('md')}{
+        max-width:352px;
+    }
+
+
 `
 
 const Box = styled.div`
