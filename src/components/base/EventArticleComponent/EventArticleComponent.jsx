@@ -12,13 +12,14 @@ import SocialLinks from "../SocialLinks/SocialLinks"
 
 import LineSVG from "../../../theme/img/line.svg"
 
-const EventArticleComponent = ({ title, slug, dateTime, short, eventbriteId, image, countries, article, socialLinks }) => {
+const EventArticleComponent = ({ title, slug, dateAndTime, short, eventbriteId, image, countries, article, socialLinks }) => {
 
     const tz = moment.tz.guess()
-    const date = moment.tz(dateTime, tz).format('MMMM Do YYYY, h:mm a z')
+    // const date = moment('2020-09-25 15:00:00').tz(moment.tz.guess()).format('MMMM Do YYYY, h:mm a z')
+    const date = moment(dateAndTime).tz(moment.tz.guess()).format('MMMM Do YYYY, h:mm a z')
 
     const now = moment()
-    const event = moment.tz(dateTime, tz)
+    const event = moment(dateAndTime).tz(moment.tz.guess())
 
     return(
         <React.Fragment>
@@ -33,7 +34,7 @@ const EventArticleComponent = ({ title, slug, dateTime, short, eventbriteId, ima
                             <Line src={LineSVG} />
                             <Text>
                                 <Short>{short}</Short>
-                                {!now.isAfter(event) && <Countdown date={dateTime} />}
+                                {!now.isAfter(event) && <Countdown date={dateAndTime} />}
                                 <Date>{date}</Date>
                                 <Countries>
                                     <p>Available in:</p>

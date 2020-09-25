@@ -19,7 +19,6 @@ class Countdown extends React.Component {
         this.calculateTime()
         let interval = setInterval(() => this.calculateTime(), 1000)
         this.setState({ interval: interval })
-        console.log(this.props.date)
     }
 
     componentWillUnmount(){
@@ -28,10 +27,10 @@ class Countdown extends React.Component {
 
     calculateTime(){
 
-        const tz = moment.tz.guess()
-        const date = moment(this.props.date)
+        const local = moment(this.props.date).tz(moment.tz.guess())
+
         const now = new Date()
-        const diff = (date.valueOf() / 1000) - (now.getTime() / 1000)
+        const diff = (local.valueOf() / 1000) - (now.getTime() / 1000)
         const duration = moment.duration(diff * 1000, 'milliseconds')
 
 

@@ -106,11 +106,11 @@ class StreamPage extends React.Component  {
    render(){
 
     const { data } = this.props
-    const { title, videoType, videoId, image, short, dateTime } = data.contentfulEvent
+    const { title, videoType, videoId, image, short, dateAndTime } = data.contentfulEvent
 
     const tz = moment.tz.guess()
     const now = moment()
-    const event = moment.tz(dateTime, tz)
+    const event = moment(dateAndTime).tz(moment.tz.guess())
 
     return (
         <Container>
@@ -141,7 +141,7 @@ class StreamPage extends React.Component  {
                 {!now.isAfter(event) && (
                   <React.Fragment>
                     <Short>Stream starts in</Short>
-                    <Countdown date={dateTime} />
+                    <Countdown date={dateAndTime} />
                   </React.Fragment>
                   )
                 }
@@ -437,7 +437,8 @@ query StreamQuery($slug:String!){
       id
       eventbriteId
       title
-      dateTime
+      identifier
+      dateAndTime
       videoType
     	videoId
       short

@@ -24,7 +24,7 @@ const GatePage = ({ pageContext, data }) => {
         }
     }
 
-    const { dateTime, image, eventbriteId } = data.contentfulEvent
+    const { dateAndTime, image, eventbriteId } = data.contentfulEvent
     const { register, handleSubmit, errors, reset } = useForm()
     const [ loading, setLoading ] = useState(false)
     const [ email, setEmail ] = useQueryParam("email", StringParam);
@@ -121,7 +121,7 @@ query GateQuery($slug:String!){
       id
       eventbriteId
       title
-      dateTime
+      dateAndTime
       image{
         file{
           url

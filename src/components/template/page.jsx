@@ -260,6 +260,7 @@ query PageQuery($contentful_id:String!){
       event:node{
         title
         slug
+        identifier
         eventbriteId
         eventbriteLink
         videoType
@@ -267,7 +268,7 @@ query PageQuery($contentful_id:String!){
         category{
           title
         }
-        dateTime
+        dateAndTime
         image{
           file{
             url

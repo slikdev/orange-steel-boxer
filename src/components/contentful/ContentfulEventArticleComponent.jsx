@@ -15,7 +15,8 @@ const ContentfulEventArticleComponent = ({ id, transition }) => {
                 event{
                   title
                   slug
-                  dateTime
+                  dateAndTime
+                  identifier
                   short
                   eventbriteLink
                   eventbriteId
@@ -40,7 +41,8 @@ const ContentfulEventArticleComponent = ({ id, transition }) => {
         <EventArticleComponent 
             title={data.event.title} 
             slug={data.event.slug} 
-            dateTime={data.event.dateTime} 
+            dateAndTime={data.event.dateAndTime} 
+            identifier={data.event.identifier} 
             short={data.event.short} 
             eventbriteLink={data.event.eventbriteLink} 
             eventbriteId={data.event.eventbriteId} 

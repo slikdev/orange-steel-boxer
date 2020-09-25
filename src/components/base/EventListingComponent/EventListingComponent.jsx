@@ -62,7 +62,8 @@ class EventListingComponent extends React.Component {
                                 <div key={index} className="swiper-slide" role="listitem">
                                     <EventCard 
                                         title={item.title}  
-                                        dateTime={item.dateTime}  
+                                        identifier={item.identifier}  
+                                        dateAndTime={item.dateAndTime}  
                                         image={item.image.file.url}  
                                         slug={item.slug}  
                                         category={item.category.title} 

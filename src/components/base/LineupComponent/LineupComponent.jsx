@@ -7,7 +7,6 @@ import EventCard from "../EventListingComponent/EventCard"
 
 const LineupComponent = ({ title, events, transition }) => {
 
-    const tz = moment.tz.guess()
     const now = moment()
 
     const coming = []
@@ -15,7 +14,7 @@ const LineupComponent = ({ title, events, transition }) => {
 
     events.forEach((item, index) => {
 
-        const event = moment.tz(item.dateTime, tz)
+        const event = moment(item.dateAndTime).tz(moment.tz.guess())
 
         if(now.isAfter(event))
             past.push(item)
@@ -23,9 +22,6 @@ const LineupComponent = ({ title, events, transition }) => {
             coming.push(item)
 
     })
-
-    console.log(coming)
-    console.log(past)
 
     return(
         <Container>
@@ -38,8 +34,9 @@ const LineupComponent = ({ title, events, transition }) => {
                         <div key={index} className="col-xs-12 col-sm-8 col-md-6 col-lg-4">
                             <Item>
                                 <EventCard 
-                                    title={item.title}  
-                                    dateTime={item.dateTime}  
+                                    title={item.title}   
+                                    identifier={item.identifier}   
+                                    dateAndTime={item.dateAndTime}  
                                     image={item.image.file.url}  
                                     slug={item.slug}  
                                     category={item.category.title}  
@@ -61,7 +58,8 @@ const LineupComponent = ({ title, events, transition }) => {
                             <Item>
                                 <EventCard 
                                     title={item.title}  
-                                    dateTime={item.dateTime}  
+                                    identifier={item.identifier}  
+                                    dateAndTime={item.dateAndTime}   
                                     image={item.image.file.url}  
                                     slug={item.slug}  
                                     category={item.category.title}  

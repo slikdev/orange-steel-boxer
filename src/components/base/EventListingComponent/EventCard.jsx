@@ -6,14 +6,13 @@ import TransitionLink from "gatsby-plugin-transition-link"
 
 import vars from "../../../theme/styles/vars"
 
-const EventCard = ({ title, dateTime, image, slug, category, link, transition }) => {
+const EventCard = ({ title, identifier, dateAndTime, image, slug, category, link, transition }) => {
 
-    const date = moment(dateTime)
-    const tz = moment.tz.guess()
+    const date = moment(dateAndTime).tz(moment.tz.guess())
 
-    const day = date.tz(tz).format('DD')
-    const month = date.tz(tz).format('MMM')
-    const time = date.tz(tz).format('h:mm a')
+    const day = date.format('DD')
+    const month = date.format('MMM')
+    const time = date.format('h:mm a')
 
     return(
         <TransitionLink 
@@ -25,6 +24,7 @@ const EventCard = ({ title, dateTime, image, slug, category, link, transition })
                 <Text>
                     <Category>{category}</Category>
                     <Title>{title}</Title>
+                    <Indentifier>{identifier}</Indentifier>
                 </Text>
                 <DateBox>
                     <Time>{time}</Time>
@@ -153,8 +153,8 @@ const Category = styled.p`
     position:relative;
     text-transform:uppercase;
     color:${vars.ORANGE};
-    letter-spacing:4px;
-    font-size:12px;
+    letter-spacing:3px;
+    font-size:9px;
     font-weight:600;
     margin-top:23px;
 `
@@ -166,5 +166,11 @@ const Title = styled.h4`
     text-transform:uppercase;
     font-size:28px;
     font-weight:600;
-    margin-top:23px;
+    margin-top:10px;
+    margin-bottom:0px;
+`
+
+const Indentifier = styled.p`
+    margin-top:6px;
+    font-size:14px;
 `
