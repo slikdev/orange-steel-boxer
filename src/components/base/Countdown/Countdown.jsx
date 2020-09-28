@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { up } from "styled-breakpoints"
 import moment from "moment-timezone"
+import CountdownComponent from "react-countdown"
 
 import vars from "../../../theme/styles/vars"
 
@@ -45,9 +46,38 @@ class Countdown extends React.Component {
     }
 
     render(){
+
+        const renderer = ({ days, hours, minutes, seconds, }) => {
+
+            return(
+                <>
+                    <Box>
+                        <Number>{days}</Number>
+                        <Label>days</Label>
+                    </Box>
+                    <Box>
+                        <Number>{hours}</Number>
+                        <Label>hours</Label>
+                    </Box>
+                    <Box>
+                        <Number>{minutes}</Number>
+                        <Label>mins</Label>
+                    </Box>
+                    <Box>
+                        <Number>{seconds}</Number>
+                        <Label>seconds</Label>
+                    </Box>
+                </>
+            )
+
+        }
         return(
             <Container>
-                {this.state.months > 0 && 
+                <CountdownComponent 
+                    date={this.props.date} 
+                    renderer={renderer}
+                />
+                {/* {this.state.months > 0 && 
                 <Box>
                     <Number>{this.state.months}</Number>
                     <Label>month{this.state.months > 1 && `s`}</Label>
@@ -67,7 +97,7 @@ class Countdown extends React.Component {
                 <Box>
                     <Number>{this.state.seconds}</Number>
                     <Label>seconds</Label>
-                </Box>
+                </Box> */}
             </Container>
         )
     }
