@@ -47,26 +47,30 @@ class Countdown extends React.Component {
 
     render(){
 
-        const renderer = ({ days, hours, minutes, seconds, }) => {
+        const renderer = ({ days, hours, minutes, seconds, completed }) => {
 
             return(
                 <>
-                    <Box>
-                        <Number>{days}</Number>
-                        <Label>days</Label>
-                    </Box>
-                    <Box>
-                        <Number>{hours}</Number>
-                        <Label>hours</Label>
-                    </Box>
-                    <Box>
-                        <Number>{minutes}</Number>
-                        <Label>mins</Label>
-                    </Box>
-                    <Box>
-                        <Number>{seconds}</Number>
-                        <Label>seconds</Label>
-                    </Box>
+                    {!completed && 
+                    <React.Fragment>
+                        <Box>
+                            <Number>{days}</Number>
+                            <Label>days</Label>
+                        </Box>
+                        <Box>
+                            <Number>{hours}</Number>
+                            <Label>hours</Label>
+                        </Box>
+                        <Box>
+                            <Number>{minutes}</Number>
+                            <Label>mins</Label>
+                        </Box>
+                        <Box>
+                            <Number>{seconds}</Number>
+                            <Label>seconds</Label>
+                        </Box>
+                    </React.Fragment>
+                    }
                 </>
             )
 
@@ -77,27 +81,6 @@ class Countdown extends React.Component {
                     date={this.props.date} 
                     renderer={renderer}
                 />
-                {/* {this.state.months > 0 && 
-                <Box>
-                    <Number>{this.state.months}</Number>
-                    <Label>month{this.state.months > 1 && `s`}</Label>
-                </Box>}
-                <Box>
-                    <Number>{this.state.days}</Number>
-                    <Label>days</Label>
-                </Box>
-                <Box>
-                    <Number>{this.state.hours}</Number>
-                    <Label>hours</Label>
-                </Box>
-                <Box>
-                    <Number>{this.state.mins}</Number>
-                    <Label>mins</Label>
-                </Box>
-                <Box>
-                    <Number>{this.state.seconds}</Number>
-                    <Label>seconds</Label>
-                </Box> */}
             </Container>
         )
     }
