@@ -269,6 +269,7 @@ query PageQuery($contentful_id:String!){
           title
         }
         dateAndTime
+        timestamp
         image{
           file{
             url

@@ -6,7 +6,7 @@ import TransitionLink from "gatsby-plugin-transition-link"
 
 import vars from "../../../theme/styles/vars"
 
-const EventCard = ({ title, identifier, dateAndTime, image, slug, category, link, transition }) => {
+const EventCard = ({ title, identifier, dateAndTime, timestamp, image, slug, category, link, transition }) => {
 
     const date = moment(dateAndTime).tz(moment.tz.guess())
 
