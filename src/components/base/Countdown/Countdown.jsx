@@ -75,6 +75,8 @@ class Countdown extends React.Component {
             )
 
         }
+
+        console.log('timestamp:'+this.props.date * 1000)
         return(
             <Container>
                 <CountdownComponent 
