@@ -80,8 +80,7 @@ class Countdown extends React.Component {
 
         
 
-        let st = moment(this.props.date * 1000).toDate()
-        console.log('st:'+st)
+        let st = moment(this.props.date).toDate()
 
         return(
             <Container>
