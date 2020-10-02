@@ -107,8 +107,9 @@ class StreamPage extends React.Component  {
 
     const { data } = this.props
     const { title, videoType, videoId, image, short, dateAndTime } = data.contentfulEvent
-
-    const tz = moment.tz.guess()
+    
+    console.log(dateAndTime)
+    
     const now = moment()
     const event = moment(dateAndTime).tz(moment.tz.guess())
 

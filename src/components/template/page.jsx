@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { up } from "styled-breakpoints"
 import { graphql, navigate, withPrefix } from "gatsby"
 import { TransitionPortal } from "gatsby-plugin-transition-link"
+import CookieConsent, { Cookies } from "react-cookie-consent"
 
 import PageAnimation from "../base/PageAnimation/PageAnimation"
 import SEO from "../global/seo"
@@ -161,6 +162,8 @@ class Page extends React.Component{
     const { contentfulPage } = this.props.data
     const { meta, components  } = contentfulPage
 
+    console.log(Cookies('GlobalLive'))
+
     return(
       <Layout>
           <SEO 
@@ -169,6 +172,16 @@ class Page extends React.Component{
               image={ ( meta.image ? meta.image.file.url : null  )} 
           />
           <Main>
+            <CookieConsent
+              location="bottom"
+              buttonText="I agree"
+              cookieName="GlobalLive"
+              style={{ background: "rgba(0,0,0,0.9)" }}
+              buttonStyle={{ backgroundColor:"#EC574C", color: "#000000", fontSize: "14px", padding:"12px" }}
+              expires={150}
+            >
+              This website uses cookies to enhance the user experience.
+            </CookieConsent>
             <Components id="components">
             { components.map((component, i) => this.createContentfulComponent(component.id, component.__typename, i)) }
             </Components>

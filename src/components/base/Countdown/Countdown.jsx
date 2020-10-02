@@ -47,6 +47,8 @@ class Countdown extends React.Component {
 
     render(){
 
+        console.log(this.props.date)
+
         const renderer = ({ days, hours, minutes, seconds, completed }) => {
 
             return(
