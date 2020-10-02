@@ -37,6 +37,7 @@ const LineupComponent = ({ title, events, transition }) => {
                                     title={item.title}   
                                     identifier={item.identifier}   
                                     dateAndTime={item.dateAndTime}  
+                                    timestamp={item.timestamp}  
                                     image={item.image.file.url}  
                                     slug={item.slug}  
                                     category={item.category.title}  

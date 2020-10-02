@@ -12,7 +12,7 @@ import SocialLinks from "../SocialLinks/SocialLinks"
 
 import LineSVG from "../../../theme/img/line.svg"
 
-const EventArticleComponent = ({ title, slug, dateAndTime, short, eventbriteId, image, countries, article, socialLinks }) => {
+const EventArticleComponent = ({ title, slug, dateAndTime, timestamp, short, eventbriteId, image, countries, article, socialLinks }) => {
 
     const date = moment(dateAndTime).tz(moment.tz.guess()).format('MMMM Do YYYY, h:mm a z')
 
@@ -29,7 +29,7 @@ const EventArticleComponent = ({ title, slug, dateAndTime, short, eventbriteId, 
                             <Line src={LineSVG} />
                             <Text>
                                 <Short>{short}</Short>
-                                <Countdown date={dateAndTime} />
+                                <Countdown date={timestamp} />
                                 <Date>{date}</Date>
                                 <Countries>
                                     <p>Available in:</p>

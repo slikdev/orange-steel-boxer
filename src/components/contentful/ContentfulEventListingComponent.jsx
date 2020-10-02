@@ -18,6 +18,7 @@ const ContentfulEventListingComponent = ({ id, transition }) => {
                   visible
                   eventbriteLink
                   dateAndTime
+                  timestamp
                   identifier
                   category{
                     title
