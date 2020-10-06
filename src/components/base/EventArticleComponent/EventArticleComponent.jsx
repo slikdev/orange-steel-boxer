@@ -29,7 +29,7 @@ const EventArticleComponent = ({ title, slug, dateAndTime, timestamp, short, eve
                             <Line src={LineSVG} />
                             <Text>
                                 <Short>{short}</Short>
-                                <Countdown date={timestamp} />
+                                <Countdown date={dateAndTime} />
                                 <Date>{date}</Date>
                                 <Countries>
                                     <p>Available in:</p>

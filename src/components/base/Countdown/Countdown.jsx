@@ -47,6 +47,8 @@ class Countdown extends React.Component {
 
     render(){
 
+        console.log(this.props.date)
+
         const renderer = ({ days, hours, minutes, seconds, completed }) => {
 
             return(
@@ -78,15 +80,12 @@ class Countdown extends React.Component {
 
         
 
-        let st = moment(this.props.date * 1000).toDate()
-        console.log('st:'+st)
+        let st = moment(this.props.date).toDate()
 
         return(
             <Container>
                 <CountdownComponent 
                     date={st}
-                    // date={this.props.date * 1000}
-                    // date={1603087200*1000}
                     renderer={renderer}
                 />
             </Container>
