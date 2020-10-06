@@ -100,12 +100,12 @@ class Page extends React.Component{
       },
     }
 
-    if(process.env.GATSBY_MAINTENANCE === 'true'){
-      if (typeof window !== "undefined") {
-        const url = withPrefix(`/holding`)
-        navigate(url)
-      }
-    }
+    // if(process.env.GATSBY_MAINTENANCE === 'true'){
+    //   if (typeof window !== "undefined") {
+    //     const url = withPrefix(`/holding`)
+    //     navigate(url)
+    //   }
+    // }
 
   }
 
