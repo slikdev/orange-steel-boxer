@@ -122,6 +122,9 @@ class StreamPage extends React.Component  {
               {videoType && videoType === "Vimeo" && <Player id="player">
                 <VimeoEmbed id={videoId} autoplay={true} />
               </Player>}
+              {videoType && videoType === "VimeoLive" && <Player id="player">
+                <VimeoLiveEmbed id={videoId} autoplay={true} />
+              </Player>}
             </Inner>
             <Background>
               <Image url={`${image.file.url}?w=1000`} />
@@ -428,6 +431,22 @@ const VimeoEmbed = ({ id, autoplay }) => (
     </ApectRatioBox>
 )
 
+const VimeoLiveEmbed = ({ id, autoplay }) => (
+    <ApectRatioBox>
+        <iframe 
+            width="560" 
+            height="349"
+            title="vimeo-stream"
+            src={`https://vimeo.com/event/${id}/embed${(autoplay ? '?autoplay=1' : '')}`} 
+            frameBorder="0" 
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+            allowFullScreen>
+        </iframe>
+    </ApectRatioBox>
+)
+
+
+https://vimeo.com/event/459007/embed
 
 export const streamQuery = graphql`
 query StreamQuery($slug:String!){
