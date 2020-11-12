@@ -445,9 +445,6 @@ const VimeoLiveEmbed = ({ id, autoplay }) => (
     </ApectRatioBox>
 )
 
-
-https://vimeo.com/event/459007/embed
-
 export const streamQuery = graphql`
 query StreamQuery($slug:String!){
     contentfulEvent(slug:{eq:$slug}){
