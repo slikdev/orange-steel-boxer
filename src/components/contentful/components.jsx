@@ -9,6 +9,7 @@ import ContentfulCompanyListComponent from "./ContentfulCompanyListComponent"
 import ContentfulEventListingComponent from "./ContentfulEventListingComponent"
 import ContentfulLineupComponent from "./ContentfulLineupComponent"
 import ContentfulInstructionsComponent from "./ContentfulInstructionsComponent"
+import ContentfulInstructionsVideoComponent from "./ContentfulInstructionsVideoComponent"
 
 export default {
     ContentfulArticleComponent,
@@ -22,4 +23,5 @@ export default {
     ContentfulLineupComponent,
     ContentfulNavigationComponent,
     ContentfulSliderComponent,
+    ContentfulInstructionsVideoComponent,
 }

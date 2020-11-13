@@ -162,8 +162,6 @@ class Page extends React.Component{
     const { contentfulPage } = this.props.data
     const { meta, components  } = contentfulPage
 
-    console.log(Cookies('GlobalLive'))
-
     return(
       <Layout>
           <SEO 
@@ -255,6 +253,10 @@ query PageQuery($contentful_id:String!){
         id
       }
       ... on ContentfulInstructionsComponent{
+        __typename
+        id
+      }
+      ... on ContentfulInstructionsVideoComponent{
         __typename
         id
       }
