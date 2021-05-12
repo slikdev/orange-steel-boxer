@@ -52,7 +52,7 @@
     "slash": "^3.0.0",
     "styled-breakpoints": "^8.1.0",
     "styled-components": "^5.1.0",
-    "swiper": "^5.3.8",
+    "swiper": "^6.5.1",
     "universal-cookie": "^4.0.3",
     "use-query-params": "^1.1.2"
   },
